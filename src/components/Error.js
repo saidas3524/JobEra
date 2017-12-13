@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export class App extends Component {
-
-    constructor(props){
-        super(props);
-    }
+export class Error extends Component {
     render() {
         return (
             <h1>
-                This is the main page
-                
+                Not a valid path
             </h1>
         );
     }
 }
 
+Error.propTypes = {
 
-
-export default App;
+};
