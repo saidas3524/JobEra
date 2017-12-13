@@ -8,10 +8,10 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { getStore } from './getStore';
 
 
-import { Register,App,Error } from './components';
+import { App,Error } from './components';
 import reducers from './reducers';
 
-// import App from './components/App';
+ import Register from './components/Register/Register';
 
 
 const store = getStore();
