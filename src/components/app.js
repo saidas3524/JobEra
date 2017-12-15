@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { isAuthenticated } from "../services";
+
 export class App extends Component {
 
     constructor(props){
@@ -9,7 +11,7 @@ export class App extends Component {
     render() {
         return (
             <h1>
-                This is the main page
+                this is main page
                 
             </h1>
         );

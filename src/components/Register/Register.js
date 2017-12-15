@@ -57,7 +57,7 @@ export class Register extends Component {
                     <div className="panel-heading">
                         <div className="panel-title text-center">
 
-                            <img className="logo_registerPage" src={logo} />
+                            {/* <img className="logo_registerPage" src={logo} /> */}
                         </div>
                     </div>
                     <div className="main-login main-center">

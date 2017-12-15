@@ -4,6 +4,8 @@ import { fromJS } from 'immutable';
 import fetch from 'isomorphic-fetch';
 import { SAVE_USER_REGISTRATION } from "../actions";
 
+import { setToken } from "../services";
+
 
 export function* saveUserRegistration() {
     
@@ -18,6 +20,7 @@ export function* saveUserRegistration() {
     });
 
     const UserData = yield apply(responseC, responseC.json);
+    setToken(UserData.token);
     console.log(UserData);
 
  
