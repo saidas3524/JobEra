@@ -1,23 +1,44 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 
 import { isAuthenticated } from "../services";
+import { getGreetings } from '../actions';
+import { greetingsSelector } from '../selectors/greetingsSelector';
 
 export class App extends Component {
 
     constructor(props){
         super(props);
     }
+
+    componentWillMount(){
+        this.props.callGreetings();
+    }
     render() {
+        const {greetings} = this.props;
         return (
             <h1>
-                this is main page
+                {greetings && greetings.map((greet)=> {return (<div> this is greet one </div>)})}
                 
             </h1>
         );
     }
 }
 
+const mapDispatchToProps = (dispatch)=>(
+    {
+        callGreetings(){
+            dispatch(getGreetings());
+        }
+    }
+);
 
-
-export default App;
+const mapStateToProps = (state)=>{
+    var greetings = greetingsSelector(state);
+    greetings = greetings? greetings.toJS(): greetings
+    return{
+        ...greetings
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);

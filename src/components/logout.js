@@ -6,6 +6,7 @@ import { removeToken } from "../services";
 export class LogOut extends Component {
     click = ()=>{
         removeToken();
+        this.props.history.push("/register")
     }
     render() {
         return (

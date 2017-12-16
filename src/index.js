@@ -6,9 +6,10 @@ import { BrowserRouter, Switch, Route,Redirect } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { getStore } from './getStore';
+import App from "./components/app";
 
 
-import { App,Error,PrivateRoute,LogOut } from './components';
+import { Error,PrivateRoute,LogOut } from './components';
 import reducers from './reducers';
 
  import Register from './components/Register/Register';
