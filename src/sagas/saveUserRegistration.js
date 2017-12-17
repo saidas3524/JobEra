@@ -8,20 +8,22 @@ import { setToken } from "../services";
 
 
 export function* saveUserRegistration() {
-    
-    const {user} = yield take(SAVE_USER_REGISTRATION);
-    const responseC = yield call(fetch, "http://localhost:3300/register", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        body :JSON.stringify(user)
-    });
 
-    const UserData = yield apply(responseC, responseC.json);
-    setToken(UserData.token);
-    console.log(UserData);
+    while (true) {
 
- 
+        const { user } = yield take(SAVE_USER_REGISTRATION);
+        const responseC = yield call(fetch, "http://localhost:3300/register", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify(user)
+        });
+
+        const UserData = yield apply(responseC, responseC.json);
+        setToken(UserData.token);
+        console.log(UserData);
+
+    }
 }
