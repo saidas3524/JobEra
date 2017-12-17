@@ -8,8 +8,10 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { getStore } from './getStore';
 import App from "./components/app";
 
+import  Login  from "./components/login";
 
-import { Error,PrivateRoute,LogOut } from './components';
+
+import { Error,PrivateRoute,LogOut,NonAuthenticatedRoute } from './components';
 import reducers from './reducers';
 
  import Register from './components/Register/Register';
@@ -24,9 +26,11 @@ ReactDOM.render((
         <BrowserRouter>
             <Switch>
                 
-                <Route exact path="/Register" component={Register} />
+                <NonAuthenticatedRoute exact path="/Register" component={Register} />
+                <NonAuthenticatedRoute exact path="/Login" component={Login}/>
                 <PrivateRoute exact path="/" component={App} />
                 <PrivateRoute exact path="/logout" component={LogOut} />
+
                 <Route component={Error}/>
 
             </Switch>

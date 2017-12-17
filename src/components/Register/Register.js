@@ -18,6 +18,12 @@ export class Register extends Component {
 
         }
     }
+   
+    
+    LoginClicked = (event)=>{
+        event.preventDefault();
+        this.props.history.push("/Login");
+    }
 
     handleChange = (event) => {
         const target = event.target;
@@ -117,7 +123,7 @@ export class Register extends Component {
                                 <button type="button" onClick={this.RegisterClicked} className="btn btn-primary btn-lg btn-block login-button">Register</button>
                             </div>
                             <div className="login-register">
-                                <a href="/">Login</a>
+                                <a href="#" onClick={this.LoginClicked}>Login</a>
                             </div>
                         </form>
                     </div>
