@@ -9,14 +9,14 @@ import { login } from "../actions";
 export class Login extends Component {
 
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             userName: "",
             password: "",
         }
     }
-   
+
     handleChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -27,31 +27,38 @@ export class Login extends Component {
         });
     }
 
-    LoginClicked = ()=>{
-        this.props.Login({userName:this.state.userName,password:this.state.password});
+    LoginClicked = () => {
+        this.props.Login({ userName: this.state.userName, password: this.state.password });
 
     }
 
-    RegisterClicked = (event)=>{
+    RegisterClicked = (event) => {
         event.preventDefault();
         this.props.history.push("/Register");
     }
 
     render() {
         const user = {
-                        username: this.state.userName,
-                        password:this.state.password
-                     }
+            username: this.state.userName,
+            password: this.state.password
+        }
         return (
             <div className="container">
+                
                 <div className="row main">
                     <div className="panel-heading">
                         <div className="panel-title text-center">
 
-                            <img className="logo_registerPage" src={logo} />
+                            {/* <img className="logo_registerPage" src={logo} /> */}
                         </div>
                     </div>
-                    <div className="main-login main-center">
+                    <div className="main-login main-center animated fadeInDown">
+                        <div className="panel-heading">
+                            <div className="panel-title text-center">
+
+                                {/* <img className="logo_registerPage" src={logo} /> */}
+                            </div>
+                        </div>
                         <form className="form-horizontal" method="post" action="#">
                             <div className="form-group">
                                 <label htmlFor="username" className="cols-sm-2 control-label">Username</label>
@@ -78,7 +85,7 @@ export class Login extends Component {
                                 <button type="button" onClick={this.LoginClicked} className="btn btn-primary btn-lg btn-block login-button">Login</button>
                             </div>
                             <div className="login-register">
-                                <a href="#" onClick = {this.RegisterClicked}>Register</a>
+                                <a href="#" onClick={this.RegisterClicked}>Register</a>
                             </div>
                         </form>
                     </div>
@@ -95,7 +102,7 @@ var mapStateToProps = (state) => {
 }
 
 var mapDispatchToProps = (dispatch) => ({
-    Login(user){
+    Login(user) {
         dispatch(login(user));
     }
 })
