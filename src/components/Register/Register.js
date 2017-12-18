@@ -4,7 +4,7 @@ import "./Register.css";
 import { connect } from "react-redux";
 
 import logo from '../../images/jobEra.png';
-import {saveUserRegistration} from '../../actions';
+import { saveUserRegistration } from '../../actions';
 
 export class Register extends Component {
     constructor(props) {
@@ -18,9 +18,9 @@ export class Register extends Component {
 
         }
     }
-   
-    
-    LoginClicked = (event)=>{
+
+
+    LoginClicked = (event) => {
         event.preventDefault();
         this.props.history.push("/Login");
     }
@@ -66,7 +66,13 @@ export class Register extends Component {
                             {/* <img className="logo_registerPage" src={logo} /> */}
                         </div>
                     </div>
-                    <div className="main-login main-center">
+                    <div className="main-login main-center animated fadeInDown">
+                        <div className="panel-heading">
+                            <div className="panel-title text-center">
+
+                                {/* <img className="logo_registerPage" src={logo} /> */}
+                            </div>
+                        </div>
                         <form className="form-horizontal" method="post" action="#">
 
                             <div className="form-group">
@@ -138,4 +144,4 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-export default connect(null,mapDispatchToProps)(Register);
+export default connect(null, mapDispatchToProps)(Register);
