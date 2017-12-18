@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import logo from '../images/jobEra.png';
 
 import { login } from "../actions";
-
+import { Spinner2 } from "../components";
+import { loginStatusSelector } from '../selectors/loginStatusSelector';
+import { PENDING,SUCCESS,FAILURE } from '../actions/statusConstants';
 
 
 export class Login extends Component {
@@ -37,6 +39,12 @@ export class Login extends Component {
         this.props.history.push("/Register");
     }
 
+    componentWillReceiveProps (nextProps) {
+        if( nextProps.loginStatus && nextProps.loginStatus.status == SUCCESS){
+            nextProps.history.push("/");
+        }
+     }
+
     render() {
         const user = {
             username: this.state.userName,
@@ -56,7 +64,7 @@ export class Login extends Component {
                         <div className="panel-heading">
                             <div className="panel-title text-center">
 
-                                {/* <img className="logo_registerPage" src={logo} /> */}
+                                <img className="logo_registerPage" src={logo} />
                             </div>
                         </div>
                         <form className="form-horizontal" method="post" action="#">
@@ -82,7 +90,9 @@ export class Login extends Component {
 
 
                             <div className="form-group">
-                                <button type="button" onClick={this.LoginClicked} className="btn btn-primary btn-lg btn-block login-button">Login</button>
+                                <button type="button" onClick={this.LoginClicked} className="btn btn-primary btn-lg btn-block login-button">
+                                {this.props.isLoggingIn ?  <Spinner2/> : "Login"}
+                                </button>
                             </div>
                             <div className="login-register">
                                 <a href="#" onClick={this.RegisterClicked}>Register</a>
@@ -96,8 +106,12 @@ export class Login extends Component {
 }
 
 var mapStateToProps = (state) => {
-    return {
 
+    var loginStatus = loginStatusSelector(state);
+    loginStatus = loginStatus ? loginStatus.toJS(): loginStatus;
+    return {
+        isLoggingIn: loginStatus ? loginStatus.status == PENDING: false,
+        loginStatus:loginStatus
     }
 }
 

@@ -2,9 +2,10 @@
 import { take, put, call, apply } from 'redux-saga/effects';
 import { fromJS } from 'immutable';
 import fetch from 'isomorphic-fetch';
-import { SAVE_USER_REGISTRATION } from "../actions";
+import { SAVE_USER_REGISTRATION, registrationStatus, SUCCESS, FAILURE, PENDING } from "../actions";
 
 import { setToken } from "../services";
+import { fetchUtility } from '../utility/fetchUtility';
 
 
 export function* saveUserRegistration() {
@@ -12,7 +13,9 @@ export function* saveUserRegistration() {
     while (true) {
 
         const { user } = yield take(SAVE_USER_REGISTRATION);
-        const responseC = yield call(fetch, "http://localhost:3300/register", {
+        yield put(registrationStatus(PENDING));
+
+        const { response, error } = yield call(fetchUtility, "http://localhost:3300/register", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -20,10 +23,25 @@ export function* saveUserRegistration() {
             },
             body: JSON.stringify(user)
         });
+        if (response.status >= 200 && response.status < 300) {
 
-        const UserData = yield apply(responseC, responseC.json);
-        setToken(UserData.token);
-        console.log(UserData);
 
+            const UserData = yield apply(response, response.json);
+            setToken(UserData.token);
+            yield put(registrationStatus(SUCCESS));
+
+            console.log(UserData);
+        }
+        else {
+            if (response) {
+                const message = yield response.json();
+                yield put(registrationStatus(FAILURE, message));
+            }
+            else {
+
+
+                yield put(registrationStatus(FAILURE, error));
+            }
+        }
     }
 }

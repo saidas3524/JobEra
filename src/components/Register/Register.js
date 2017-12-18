@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 
 import logo from '../../images/jobEra.png';
 import { saveUserRegistration } from '../../actions';
+import { registrationStatusSelector } from '../../selectors/registrationStatusSelector';
+import { PENDING, SUCCESS } from '../../actions/statusConstants';
+import { Spinner2 } from "../../components";
 
 export class Register extends Component {
     constructor(props) {
@@ -18,6 +21,12 @@ export class Register extends Component {
 
         }
     }
+
+    componentWillReceiveProps (nextProps) {
+        if(nextProps.registrationStatus && nextProps.registrationStatus.status == SUCCESS){
+            nextProps.history.push("/");
+        }
+     }
 
 
     LoginClicked = (event) => {
@@ -70,7 +79,7 @@ export class Register extends Component {
                         <div className="panel-heading">
                             <div className="panel-title text-center">
 
-                                {/* <img className="logo_registerPage" src={logo} /> */}
+                                <img className="logo_registerPage" src={logo} />
                             </div>
                         </div>
                         <form className="form-horizontal" method="post" action="#">
@@ -126,7 +135,11 @@ export class Register extends Component {
                             </div>
 
                             <div className="form-group">
-                                <button type="button" onClick={this.RegisterClicked} className="btn btn-primary btn-lg btn-block login-button">Register</button>
+                                <button type="button" onClick={this.RegisterClicked} className="btn btn-primary btn-lg btn-block login-button">
+                                
+                                {this.props.isRegistering ? <Spinner2/> : "Register"}
+
+                                </button>
                             </div>
                             <div className="login-register">
                                 <a href="#" onClick={this.LoginClicked}>Login</a>
@@ -144,4 +157,13 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-export default connect(null, mapDispatchToProps)(Register);
+var mapStateToProps = (state) => {
+    var registrationStatus= registrationStatusSelector(state);
+    registrationStatus = registrationStatus ? registrationStatus.toJS() : registrationStatus;
+    return {
+        isRegistering: registrationStatus? registrationStatus.status == PENDING: false,
+        registrationStatus: registrationStatus
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
