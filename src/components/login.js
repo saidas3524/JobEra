@@ -64,7 +64,7 @@ export class Login extends Component {
                         <div className="panel-heading">
                             <div className="panel-title text-center">
 
-                                <img className="logo_registerPage" src={logo} />
+                                {/* <img className="logo_registerPage" src={logo} /> */}
                             </div>
                         </div>
                         <form className="form-horizontal" method="post" action="#">

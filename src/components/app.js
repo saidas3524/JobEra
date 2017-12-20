@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { isAuthenticated } from "../services";
 import { getGreetings } from '../actions';
 import { greetingsSelector } from '../selectors/greetingsSelector';
+import { Header } from './Header';
+
+
 
 export class App extends Component {
 
@@ -18,10 +21,14 @@ export class App extends Component {
     render() {
         const {greetings} = this.props;
         return (
+            <div>
+                <Header/>
             <h1>
+
                 {greetings && greetings.map((greet)=> {return (<div> this is greet one </div>)})}
                 
             </h1>
+            </div>
         );
     }
 }
