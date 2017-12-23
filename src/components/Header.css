@@ -55,3 +55,35 @@
         background-color:whitesmoke;
     }
 }
+
+
+
+@media(max-width: 768px) {
+    .actionCard2{
+        margin : 10% auto;
+    }
+}
+
+.actionCard2{
+   min-width: 200px;
+   padding: 40px 40px;
+
+}
+.cardContainer{
+    margin: 5%
+}
+
+
+
+.actionIcon{
+    font-size: 5em;
+}
+@media(max-width: 768px) {
+    .actionIcon{
+      font-size: 3em;
+    }
+    
+}
+
+
+

@@ -25,6 +25,7 @@ export class Header extends Component {
     }
 
     render() {
+        const {user} = this.props;
         return (
             <div className="animated fadeInDown">
                 <Navbar fluid inverse collapseOnSelect>
@@ -43,7 +44,7 @@ export class Header extends Component {
                         <Nav pullRight>
                             <NavItem eventKey={1} href="#">SEARCH</NavItem>
                             <NavItem eventKey={2} href="#">ADD</NavItem>
-                            <NavDropdown eventKey={3} title="HELLO" id="basic-nav-dropdown">
+                            <NavDropdown eventKey={3} title={user? user.name.toUpperCase():"user"} id="basic-nav-dropdown">
                                 <MenuItem onClick={this.viewProfileClicked} eventKey={3.1}>MY PROFILE</MenuItem>
 
                                 <MenuItem divider />

@@ -4,30 +4,34 @@ import { fromJS } from 'immutable';
 import { GET_USER, setUser, loginStatus } from '../actions';
 import { tokenSelector, userSelector } from '../selectors/userSelector';
 import { FAILURE } from '../actions/statusConstants';
-import { removeToken } from '../services/TokenManager';
+import { removeToken, getToken } from '../services/TokenManager';
+import { InvokeUrl } from "./utilitySagas";
 
 
 
 export function* getUserInfoSaga() {
     while (true) {
         yield take(GET_USER);
-
-        var token = yield select(tokenSelector);
-        //valid token check
+        var token = yield getToken();
+         //valid token check
         if (token) {
-            var user = yield select(userSelector);
-            console.log("usersaga");
-            console.log(user);
-            if (user)
-                yield put(setUser(user));
-            else
+            const responseC = yield call(InvokeUrl, "http://localhost:3300/getUserInfo", "GET");
+            if (responseC && responseC.status == 200) {
+                const user = yield apply(responseC, responseC.json);
+                yield put(setUser(user))
+            }
+            else {
                 yield logOutTheUser();
+            }
         }
-        else
+        else {
             yield logOutTheUser();
-    }
+        }
+       
 
+    }
 }
+
 
 
 function* logOutTheUser() {
