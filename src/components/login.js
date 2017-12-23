@@ -51,7 +51,7 @@ export class Login extends Component {
             password: this.state.password
         }
         return (
-            <div className="container">
+            <div className="formPage">
                 
                 <div className="row main">
                     <div className="panel-heading">
@@ -64,7 +64,7 @@ export class Login extends Component {
                         <div className="panel-heading">
                             <div className="panel-title text-center">
 
-                                {/* <img className="logo_registerPage" src={logo} /> */}
+                                <img className="logo_registerPage" src={logo} />
                             </div>
                         </div>
                         <form className="form-horizontal" method="post" action="#">

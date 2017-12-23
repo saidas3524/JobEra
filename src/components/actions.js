@@ -1,0 +1,29 @@
+import React from 'react'
+
+export const Actions = () => {
+    return (
+        <div className="row cardContainer">
+            <div className="col-sm-5 actionCard main-login  animated fadeInLeft text-center">
+                <span className="fa-stack actionIcon">
+                    <i className="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i className="fa fa-search fa-stack-1x fa-inverse"></i> </span>
+                <h4 className="text-weight-strong">
+                    Search Existing Profiles
+              </h4>
+                
+            </div>
+
+            <div className=" col-sm-offset-2 col-sm-5 actionCard main-login  animated fadeInRight  text-center">
+                <span className="fa-stack actionIcon">
+                    <i className="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i className="fa fa-plus fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 className="text-weight-strong">
+                    Create New Profile
+              </h4>
+            </div>
+
+        </div>)
+}
+
+export default Actions

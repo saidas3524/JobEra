@@ -22,11 +22,11 @@ export class Register extends Component {
         }
     }
 
-    componentWillReceiveProps (nextProps) {
-        if(nextProps.registrationStatus && nextProps.registrationStatus.status == SUCCESS){
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.registrationStatus && nextProps.registrationStatus.status == SUCCESS) {
             nextProps.history.push("/");
         }
-     }
+    }
 
 
     LoginClicked = (event) => {
@@ -67,87 +67,90 @@ export class Register extends Component {
             confirmPassword: this.state.confirmPassword
         }
         return (
-            <div className="container">
-                <div className="row main">
-                    <div className="panel-heading">
-                        <div className="panel-title text-center">
-
-                            {/* <img className="logo_registerPage" src={logo} /> */}
-                        </div>
-                    </div>
-                    <div className="main-login main-center animated fadeInDown">
+            <div className="formPage">
+                <div className="container">
+                    <div className="row main">
                         <div className="panel-heading">
                             <div className="panel-title text-center">
 
-                                <img className="logo_registerPage" src={logo} />
+                                {/* <img className="logo_registerPage" src={logo} /> */}
                             </div>
                         </div>
-                        <form className="form-horizontal" method="post" action="#">
+                        <div className="main-login main-center animated fadeInDown">
+                            <div className="panel-heading">
+                                <div className="panel-title text-center">
 
-                            <div className="form-group">
-                                <label htmlFor="name" className="cols-sm-2 control-label">Your Name</label>
-                                <div className="cols-sm-10">
-                                    <div className="input-group">
-                                        <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" onChange={this.handleChange} name="name" id="name" value={user.name} placeholder="Enter your Name" />
-                                    </div>
+                                    <img className="logo_registerPage" src={logo} />
                                 </div>
                             </div>
+                            <form className="form-horizontal" method="post" action="#">
 
-                            <div className="form-group">
-                                <label htmlFor="email" className="cols-sm-2 control-label">Your Email</label>
-                                <div className="cols-sm-10">
-                                    <div className="input-group">
-                                        <span className="input-group-addon"><i className="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" onChange={this.handleChange} name="email" id="email" value={user.email} placeholder="Enter your Email" />
+                                <div className="form-group">
+                                    <label htmlFor="name" className="cols-sm-2 control-label">Your Name</label>
+                                    <div className="cols-sm-10">
+                                        <div className="input-group">
+                                            <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
+                                            <input type="text" className="form-control" onChange={this.handleChange} name="name" id="name" value={user.name} placeholder="Enter your Name" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="form-group">
-                                <label htmlFor="username" className="cols-sm-2 control-label">Username</label>
-                                <div className="cols-sm-10">
-                                    <div className="input-group">
-                                        <span className="input-group-addon"><i className="fa fa-users fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" onChange={this.handleChange} name="userName" id="username" value={user.userName} placeholder="Enter your Username" />
+                                <div className="form-group">
+                                    <label htmlFor="email" className="cols-sm-2 control-label">Your Email</label>
+                                    <div className="cols-sm-10">
+                                        <div className="input-group">
+                                            <span className="input-group-addon"><i className="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                            <input type="text" className="form-control" onChange={this.handleChange} name="email" id="email" value={user.email} placeholder="Enter your Email" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="form-group">
-                                <label htmlFor="password" className="cols-sm-2 control-label">Password</label>
-                                <div className="cols-sm-10">
-                                    <div className="input-group">
-                                        <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" className="form-control" onChange={this.handleChange} name="password" id="password" value={user.password} placeholder="Enter your Password" />
+                                <div className="form-group">
+                                    <label htmlFor="username" className="cols-sm-2 control-label">Username</label>
+                                    <div className="cols-sm-10">
+                                        <div className="input-group">
+                                            <span className="input-group-addon"><i className="fa fa-users fa" aria-hidden="true"></i></span>
+                                            <input type="text" className="form-control" onChange={this.handleChange} name="userName" id="username" value={user.userName} placeholder="Enter your Username" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="form-group">
-                                <label htmlFor="confirm" className="cols-sm-2 control-label">Confirm Password</label>
-                                <div className="cols-sm-10">
-                                    <div className="input-group">
-                                        <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" className="form-control" onChange={this.handleChange} name="confirmPassword" id="confirm" value={user.confirmPassword} placeholder="Confirm your Password" />
+                                <div className="form-group">
+                                    <label htmlFor="password" className="cols-sm-2 control-label">Password</label>
+                                    <div className="cols-sm-10">
+                                        <div className="input-group">
+                                            <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                            <input type="password" className="form-control" onChange={this.handleChange} name="password" id="password" value={user.password} placeholder="Enter your Password" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="form-group">
-                                <button type="button" onClick={this.RegisterClicked} className="btn btn-primary btn-lg btn-block login-button">
-                                
-                                {this.props.isRegistering ? <Spinner2/> : "Register"}
+                                <div className="form-group">
+                                    <label htmlFor="confirm" className="cols-sm-2 control-label">Confirm Password</label>
+                                    <div className="cols-sm-10">
+                                        <div className="input-group">
+                                            <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                            <input type="password" className="form-control" onChange={this.handleChange} name="confirmPassword" id="confirm" value={user.confirmPassword} placeholder="Confirm your Password" />
+                                        </div>
+                                    </div>
+                                </div>
 
-                                </button>
-                            </div>
-                            <div className="login-register">
-                                <a href="#" onClick={this.LoginClicked}>Login</a>
-                            </div>
-                        </form>
+                                <div className="form-group">
+                                    <button type="button" onClick={this.RegisterClicked} className="btn btn-primary btn-lg btn-block login-button">
+
+                                        {this.props.isRegistering ? <Spinner2 /> : "Register"}
+
+                                    </button>
+                                </div>
+                                <div className="login-register">
+                                    <a href="#" onClick={this.LoginClicked}>Login</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>);
+            </div>
+        );
     }
 }
 
@@ -158,10 +161,10 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 var mapStateToProps = (state) => {
-    var registrationStatus= registrationStatusSelector(state);
+    var registrationStatus = registrationStatusSelector(state);
     registrationStatus = registrationStatus ? registrationStatus.toJS() : registrationStatus;
     return {
-        isRegistering: registrationStatus? registrationStatus.status == PENDING: false,
+        isRegistering: registrationStatus ? registrationStatus.status == PENDING : false,
         registrationStatus: registrationStatus
     }
 }

@@ -6,46 +6,48 @@ import { isAuthenticated } from "../services";
 import { getGreetings } from '../actions';
 import { greetingsSelector } from '../selectors/greetingsSelector';
 import { Header } from './Header';
-
-
-
+import { removeToken } from "../services";
+import { Actions } from "../components";
+import { userSelector } from '../selectors/userSelector';
+import { getUser } from '../actions/setUserInfo';
 export class App extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
-
-    componentWillMount(){
-        this.props.callGreetings();
+    logOutClicked = ()=>{
+        removeToken();
+        this.props.history.push("/");
+    }
+    componentWillMount() {
+        this.props.getUserInfo();
     }
     render() {
-        const {greetings} = this.props;
+        const { user } = this.props;
         return (
-            <div>
-                <Header/>
-            <h1>
-
-                {greetings && greetings.map((greet)=> {return (<div> this is greet one </div>)})}
-                
-            </h1>
+            <div  className="app"  >
+                <Header user={user} logOutClicked = {this.logOutClicked}/>
+                <Actions/>
             </div>
+           
+
         );
     }
 }
 
-const mapDispatchToProps = (dispatch)=>(
+const mapDispatchToProps = (dispatch) => (
     {
-        callGreetings(){
-            dispatch(getGreetings());
+        getUserInfo() {
+            dispatch(getUser());
         }
     }
 );
 
-const mapStateToProps = (state)=>{
-    var greetings = greetingsSelector(state);
-    greetings = greetings? greetings.toJS(): greetings
-    return{
-        ...greetings
+const mapStateToProps = (state) => {
+    var user = userSelector(state);
+    user = user ? user.toJS() : user
+    return {
+        user:user
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
