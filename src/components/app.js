@@ -7,13 +7,14 @@ import { getGreetings } from '../actions';
 import { greetingsSelector } from '../selectors/greetingsSelector';
 import { Header } from './Header';
 import { removeToken } from "../services";
-import { Actions,SearchProfiles,AddProfile } from "../components";
+import { Actions,AddProfile } from "../components";
 import { userSelector } from '../selectors/userSelector';
 import { getUser } from '../actions/setUserInfo';
 import {
     Route
     
 } from 'react-router-dom';
+import SearchProfiles from "../components/SearchProfiles";
 export class App extends Component {
 
     constructor(props) {
@@ -21,6 +22,9 @@ export class App extends Component {
     }
     logOutClicked = () => {
         removeToken();
+        this.props.history.push("/");
+    }
+    logoClicked = () => {
         this.props.history.push("/");
     }
     componentWillMount() {
@@ -39,7 +43,7 @@ export class App extends Component {
         const {match} = this.props;
         return (
                 <div className="app"  >
-                    <Header user={user} logOutClicked={this.logOutClicked} />
+                    <Header user={user} logoClicked={this.logoClicked} logOutClicked={this.logOutClicked} />
                         <Route exact path={match.path} render={(props) => (<Actions actionClicked={this.actionClicked} {...props}/>)} />
                         <Route  path={`${match.path}search`} component={SearchProfiles}/>
                         <Route  path={`${match.path}Add`} component={AddProfile}/>

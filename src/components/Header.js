@@ -16,7 +16,7 @@ export class Header extends Component {
     }
 
     logoClicked = () => {
-        this.props.history.push("/");
+        this.props.logoClicked();
     }
 
     logOutClicked = () => {
@@ -32,7 +32,7 @@ export class Header extends Component {
                     <Navbar.Header>
                         <div className="row">
                             <div className="col-xs-10">
-                                <img id="logo" onClick={this.logoClicked} className="center-block logo_registerPage" src={logo} />
+                                <img id="logo" style={{cursor:"pointer"}} onClick={this.logoClicked} className="center-block logo_registerPage" src={logo} />
                             </div>
                             <div className="col-xs-2">
                                 <Navbar.Toggle />
@@ -44,7 +44,7 @@ export class Header extends Component {
                         <Nav pullRight>
                             <NavItem eventKey={1} href="#">SEARCH</NavItem>
                             <NavItem eventKey={2} href="#">ADD</NavItem>
-                            <NavDropdown eventKey={3} title={user? user.name.toUpperCase():"user"} id="basic-nav-dropdown">
+                            <NavDropdown  eventKey={3} title={user? user.name.toUpperCase():"user"} id="basic-nav-dropdown">
                                 <MenuItem onClick={this.viewProfileClicked} eventKey={3.1}>MY PROFILE</MenuItem>
 
                                 <MenuItem divider />
