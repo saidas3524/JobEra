@@ -7,29 +7,44 @@ import { getGreetings } from '../actions';
 import { greetingsSelector } from '../selectors/greetingsSelector';
 import { Header } from './Header';
 import { removeToken } from "../services";
-import { Actions } from "../components";
+import { Actions,SearchProfiles,AddProfile } from "../components";
 import { userSelector } from '../selectors/userSelector';
 import { getUser } from '../actions/setUserInfo';
+import {
+    Route
+    
+} from 'react-router-dom';
 export class App extends Component {
 
     constructor(props) {
         super(props);
     }
-    logOutClicked = ()=>{
+    logOutClicked = () => {
         removeToken();
         this.props.history.push("/");
     }
     componentWillMount() {
         this.props.getUserInfo();
     }
+    actionClicked = (type) => {
+        if (type === "search") {
+            this.props.history.push("/Search");
+        }
+        else if (type === "addnew") {
+            this.props.history.push("/Add");
+        }
+    }
     render() {
         const { user } = this.props;
+        const {match} = this.props;
         return (
-            <div  className="app"  >
-                <Header user={user} logOutClicked = {this.logOutClicked}/>
-                <Actions/>
-            </div>
-           
+                <div className="app"  >
+                    <Header user={user} logOutClicked={this.logOutClicked} />
+                        <Route exact path={match.path} render={(props) => (<Actions actionClicked={this.actionClicked} {...props}/>)} />
+                        <Route  path={`${match.path}search`} component={SearchProfiles}/>
+                        <Route  path={`${match.path}Add`} component={AddProfile}/>
+                </div>
+
 
         );
     }
@@ -47,7 +62,7 @@ const mapStateToProps = (state) => {
     var user = userSelector(state);
     user = user ? user.toJS() : user
     return {
-        user:user
+        user: user
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

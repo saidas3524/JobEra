@@ -67,7 +67,7 @@
 .actionCard2{
    min-width: 200px;
    padding: 40px 40px;
-
+   cursor: pointer;
 }
 .cardContainer{
     margin: 5%

@@ -34,10 +34,9 @@ ReactDOM.render((
 
                     <NonAuthenticatedRoute exact path="/Register" component={Register} />
                     <NonAuthenticatedRoute exact path="/Login" component={Login} />
-                    <PrivateRoute exact path="/" component={App} />
+                    <PrivateRoute path="/" component={App} />
                     <PrivateRoute exact path="/logout" component={LogOut} />
 
-                    <Route component={Error} />
 
                 </Switch>
             </div>

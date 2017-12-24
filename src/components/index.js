@@ -16,3 +16,6 @@ export {Header } from './Header'
 export {Error} from "./Error";
 
 export {Actions} from './actions'
+
+export{AddProfile} from './AddProfile'
+export{SearchProfiles} from './SearchProfiles'
