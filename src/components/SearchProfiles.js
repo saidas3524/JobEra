@@ -53,14 +53,12 @@ class SearchProfiles extends Component {
               <div className="col-lg-12">
                 <div className="row pt-md">
                   <form>
-                    <div className="form-group">
-                      <div className="row">
+                    <div id="searchFilter" className="form-group">
                         <div className="input-group">
                           <span className="input-group-addon"><i className="fa fa-filter fa" aria-hidden="true"></i></span>
                           <input type="text" className="form-control" onChange={this.handleChange} name="filter" id="filter" value={filter} placeholder="Filter by Name or Title Or Description" />
                         </div>
                       </div>
-                    </div>
                   </form>
                   {filteredProfiles && filteredProfiles.length ==0 && <div> Sorry! No Profiles to show</div>}
                   {filteredProfiles && filteredProfiles.length >0 && filteredProfiles.map((profile) => { return <Profile profile={profile} /> })}
