@@ -23,7 +23,7 @@ h6.description{
 }
 .profile .img-box{
 	min-width: 200px;
-
+	overflow: hidden;
 	min-height: 320px;
 	max-height: 320px;
 	opacity: 1;
