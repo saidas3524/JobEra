@@ -14,7 +14,7 @@ export class AddProfile extends Component {
   render() {
     return (
       <div>
-        <PersonalInfoSection/>
+        <PersonalInfoSection />
         <EducationSection/>
         <ExperienceSection/>
         <SkillsSection/>

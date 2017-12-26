@@ -17,7 +17,9 @@ export class PersonalInfoSection extends Component {
             info: {
                 firstName: "",
                 lastName: "",
-                dob: ""
+                dob: "",
+                address:"",
+                description:""
             }
         }
     }
@@ -29,10 +31,10 @@ export class PersonalInfoSection extends Component {
         return (
             <div>
 
-                <div class="card-effect card-center">
+                <div className="card-effect card-center makeInner animated fadeInDown">
                     <div className="profileCard text-center"><i className="fa fa-user-circle userImg "></i></div>
-                    <div class="infoSection">
-                        <div class="row">
+                    <div className="infoSection">
+                        <div className="row">
                             <form method="post" action="#">
 
                                 <div className="form-group">
@@ -61,7 +63,7 @@ export class PersonalInfoSection extends Component {
                                         <label htmlFor="email" className=" control-label">DOB</label>
                                         <div className="input-group date" id="dobDatePicker">
                                             <span className="input-group-addon"><i className="fa fa-calendar " aria-hidden="true"></i></span>
-                                            <input type='text' class="form-control" name="dob" id="dob" placeholder="Date of birth" value={info.dob} />
+                                            <input type='text' className="form-control" name="dob" id="dob" placeholder="Date of birth" value={info.dob} />
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +73,7 @@ export class PersonalInfoSection extends Component {
                                         <label htmlFor="email" className=" control-label">Gender</label>
                                         <div className="input-group date" id="dobDatePicker">
                                             <span className="input-group-addon"><i className="fa fa-venus-mars" aria-hidden="true"></i></span>
-                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <select className="form-control" id="exampleFormControlSelect1">
                                                 <option disabled selected value>Select gender</option>
                                                 <option value="M">Male</option>
                                                 <option vlaue="S">Female</option>
@@ -89,7 +91,8 @@ export class PersonalInfoSection extends Component {
                                             <input type="text" className="form-control" name="email" id="email" value={info.email} placeholder="Email address" />
                                         </div>
                                     </div>
-                                </div> <div className="form-group">
+                                </div> 
+                                <div className="form-group">
 
                                     <div className="col-sm-6">
                                         <label htmlFor="phone" className=" control-label">Mobile</label>
@@ -97,6 +100,18 @@ export class PersonalInfoSection extends Component {
                                             <span className="input-group-addon"><i className="fa fa-phone fa" aria-hidden="true"></i></span>
                                             <input type="text" className="form-control" name="phone" id="phone" value={info.phone} placeholder="Mobile Number" />
                                         </div>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="col-sm-12">
+                                        <label htmlFor="address">Description</label>
+                                        <textarea className="form-control" maxLength="256" name="description" id="description" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="col-sm-12">
+                                        <label htmlFor="address">Address</label>
+                                        <textarea className="form-control" name="address" id="address" rows="3"></textarea>
                                     </div>
                                 </div>
                             </form>

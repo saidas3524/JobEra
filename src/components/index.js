@@ -23,5 +23,10 @@ export {PersonalInfoSection} from './PersonalInfoSection';
 export {ExperienceSection} from './ExperienceSection';
 
 export {EducationSection} from './EducationSection';
+export {CommonSectionCard} from './CommonSectionCard';
 
 export {SkillsSection} from './SkillsSection';
+
+export {EducationModal} from './EducationModal';
+
+export {ExperienceModal} from './ExperienceModal';

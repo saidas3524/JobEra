@@ -14,7 +14,7 @@
     margin-top: 30px;
     margin: 0 auto;
     min-width: 200px;
-   padding: 40px 40px;
+ 
 
 }
 
@@ -24,7 +24,7 @@
         margin-top: 30px;
         margin: 0 auto;
         max-width: 700px;
-        padding: 40px 40px;
+       
     
     }
     
@@ -34,7 +34,7 @@
         margin-top: 30px;
         margin: 0 auto;
         max-width: 850;
-        padding: 40px 40px;
+      
     
     }
     
@@ -44,7 +44,7 @@
         margin-top: 30px;
         margin: 0 auto;
         max-width: 350px;
-        padding: 40px 40px;
+       
     
     }
     
@@ -54,10 +54,15 @@
         margin-top: 30px;
         margin: 0 auto;
         max-width: 280px;
-        padding: 40px 40px;
+        
     
     }
     
+}
+
+
+.makeInner{
+    padding: 40px 40px;
 }
 
 .card-center .userImg{
@@ -68,4 +73,19 @@
 }
 .form-group .col-sm-6{
     margin-top:10px;
+}
+.form-group .col-sm-12{
+    margin-top:10px;
+}
+.addProfileSection{
+    margin-top: 30px;
+}
+.sectionCard{
+    padding: 10px;
+}
+.sectionHeading p{
+    font-size: 18px;
+}
+.sectionData{
+    padding-left: 30px;
 }

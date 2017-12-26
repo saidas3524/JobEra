@@ -23,6 +23,13 @@ export class Header extends Component {
 
        this.props.logOutClicked();
     }
+    searchClicked = () => {
+
+        this.props.actionClicked("search");
+    }
+    addProfileClicked=()=>{
+        this.props.actionClicked("addnew");
+    } 
 
     render() {
         const {user} = this.props;
@@ -32,7 +39,7 @@ export class Header extends Component {
                     <Navbar.Header>
                         <div className="row">
                             <div className="col-xs-10">
-                                <img id="logo" style={{cursor:"pointer"}} onClick={this.logoClicked} className="center-block logo_registerPage" src={logo} />
+                                {/* <img id="logo" style={{cursor:"pointer"}} onClick={this.logoClicked} className="center-block logo_registerPage" src={logo} /> */}
                             </div>
                             <div className="col-xs-2">
                                 <Navbar.Toggle />
@@ -42,8 +49,9 @@ export class Header extends Component {
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav pullRight>
-                            <NavItem eventKey={1} href="#">SEARCH</NavItem>
-                            <NavItem eventKey={2} href="#">ADD</NavItem>
+                            <NavItem eventKey={1} onClick={this.logoClicked}>HOME</NavItem>
+                            <NavItem eventKey={1} onClick={this.searchClicked}>SEARCH</NavItem>
+                            <NavItem eventKey={2} onClick={this.addProfileClicked}>ADD</NavItem>
                             <NavDropdown  eventKey={3} title={user? user.name.toUpperCase():"user"} id="basic-nav-dropdown">
                                 <MenuItem onClick={this.viewProfileClicked} eventKey={3.1}>MY PROFILE</MenuItem>
 

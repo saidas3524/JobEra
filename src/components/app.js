@@ -44,10 +44,10 @@ export class App extends Component {
         const {match} = this.props;
         return (
                 <div className="app"  >
-                    <Header user={user} logoClicked={this.logoClicked} logOutClicked={this.logOutClicked} />
-                        <Route exact path={match.path} render={(props) => (<Actions actionClicked={this.actionClicked} {...props}/>)} />
-                        <Route  path={`${match.path}search`} component={SearchProfiles}/>
-                        <Route  path={`${match.path}Add`} component={AddProfile}/>
+                    <Header user={user} logoClicked={this.logoClicked} actionClicked={this.actionClicked} logOutClicked={this.logOutClicked} />
+                    <Route exact path={match.path} render={(props) => (<Actions actionClicked={this.actionClicked} {...props}/>)} />
+                    <Route  path={`${match.path}search`} component={SearchProfiles}/>
+                    <Route  path={`${match.path}Add`} component={AddProfile}/>
                 </div>
 
 
