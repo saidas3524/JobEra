@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { EducationModal,ExperienceModal  } from "../components";
+import { EducationModal, ExperienceModal, SkillModal } from "../components";
 import { sections } from "../services";
 
 
@@ -8,7 +8,7 @@ export class CommonSectionCard extends Component {
         super(props);
         this.state = {
             showDialog: false
-            
+
         }
         this.close.bind(this);
     }
@@ -23,14 +23,14 @@ export class CommonSectionCard extends Component {
         this.setState({
             showDialog: false
         })
-        
+
     }
-    AddValuetoSection = (value)=>{
+    AddValuetoSection = (value) => {
         console.log(value);
         this.close();
     }
 
-   
+
     render() {
 
         const { sectionDetails } = this.props;
@@ -50,11 +50,14 @@ export class CommonSectionCard extends Component {
                         <div>{children}</div>
                     </div>
                 </div>
-                { sectionDetails.code===sections.Education.code &&
-                <EducationModal show = {this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails = {sectionDetails} close={this.close}/>}
-                
-                { sectionDetails.code===sections.Experience.code &&
-                <ExperienceModal show = {this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails = {sectionDetails} close={this.close}/>}
+                {sectionDetails.code === sections.Education.code &&
+                    <EducationModal show={this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails={sectionDetails} close={this.close} />}
+
+                {sectionDetails.code === sections.Experience.code &&
+                    <ExperienceModal show={this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails={sectionDetails} close={this.close} />}
+
+                {sectionDetails.code === sections.Skills.code &&
+                    <SkillModal show={this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails={sectionDetails} close={this.close} />}
             </div>
 
         );

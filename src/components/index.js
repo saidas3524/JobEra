@@ -30,3 +30,4 @@ export {SkillsSection} from './SkillsSection';
 export {EducationModal} from './EducationModal';
 
 export {ExperienceModal} from './ExperienceModal';
+export {SkillModal} from './SkillModal';
