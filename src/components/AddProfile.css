@@ -1,0 +1,71 @@
+.card-effect{
+    background-color: #fff;
+   /* shadows and rounded borders */
+   -moz-border-radius: 2px;
+   -webkit-border-radius: 2px;
+   border-radius: 2px;
+   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+
+.card-center{
+    margin-top: 30px;
+    margin: 0 auto;
+    min-width: 200px;
+   padding: 40px 40px;
+
+}
+
+
+@media(min-width: 768px) {
+    .card-center{
+        margin-top: 30px;
+        margin: 0 auto;
+        max-width: 700px;
+        padding: 40px 40px;
+    
+    }
+    
+}
+@media(min-width: 996px) {
+    .card-center{
+        margin-top: 30px;
+        margin: 0 auto;
+        max-width: 850;
+        padding: 40px 40px;
+    
+    }
+    
+}
+@media(max-width: 768px) {
+    .card-center{
+        margin-top: 30px;
+        margin: 0 auto;
+        max-width: 350px;
+        padding: 40px 40px;
+    
+    }
+    
+}
+@media(max-width: 320px) {
+    .card-center{
+        margin-top: 30px;
+        margin: 0 auto;
+        max-width: 280px;
+        padding: 40px 40px;
+    
+    }
+    
+}
+
+.card-center .userImg{
+    font-size: 10em;
+}
+.infoSection{
+    margin-top:20px;
+}
+.form-group .col-sm-6{
+    margin-top:10px;
+}

@@ -18,4 +18,10 @@ export {Error} from "./Error";
 export {Actions} from './actions'
 
 export{AddProfile} from './AddProfile'
-export{SearchProfiles} from './SearchProfiles'
+export{SearchProfiles} from './SearchProfiles';
+export {PersonalInfoSection} from './PersonalInfoSection';
+export {ExperienceSection} from './ExperienceSection';
+
+export {EducationSection} from './EducationSection';
+
+export {SkillsSection} from './SkillsSection';

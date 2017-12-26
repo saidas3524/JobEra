@@ -7,9 +7,10 @@ import { getGreetings } from '../actions';
 import { greetingsSelector } from '../selectors/greetingsSelector';
 import { Header } from './Header';
 import { removeToken } from "../services";
-import { Actions,AddProfile } from "../components";
+import { Actions } from "../components";
 import { userSelector } from '../selectors/userSelector';
 import { getUser } from '../actions/setUserInfo';
+import AddProfile from "../components/AddProfile";
 import {
     Route
     
