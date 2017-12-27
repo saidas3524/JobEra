@@ -1,12 +1,14 @@
 import React from 'react'
-import { CommonSectionCard } from "../components";
+import { CommonSectionCard,Experience } from "../components";
 import { sections } from "../services";
 
-export const ExperienceSection = () => {
+export const ExperienceSection = ({experiences}) => {
   return (
     <div>
       <CommonSectionCard sectionDetails={sections.Experience}>
-        <div className="sectionData">ExperienceSection</div>
+        <div className="sectionData">
+          {experiences && experiences.map((experience) => { return <div><Experience experience={experience} /> <hr/></div> })}
+        </div>
       </CommonSectionCard>
     </div>
   )

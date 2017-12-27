@@ -31,3 +31,9 @@ export {EducationModal} from './EducationModal';
 
 export {ExperienceModal} from './ExperienceModal';
 export {SkillModal} from './SkillModal';
+
+
+export {Skill} from './Skill';
+export {Experience} from './Experience';
+
+export {Education} from './Education';
