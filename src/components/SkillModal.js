@@ -7,26 +7,35 @@ export class SkillModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            skillDetails: {
-                Name: ""
-            }
+            
+                skill: ""
+            
         }
         this.close = this.close.bind(this);
     }
+    handleChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
 
+        this.setState({
+            [name]: value
+        });
+    }
     close = () => {
 
         this.props.close();
     }
     AddClose = () => {
-        this.props.onAdd(this.state.skillDetails);
+        this.props.onAdd({
+            ...this.state
+        });
 
     }
 
     render() {
 
         const { sectionDetails } = this.props;
-        const { skillDetails } = this.state;
         const { show } = this.props;
         return (
             <Modal show={show} onHide={this.close} backdrop={'static'}>
@@ -40,8 +49,8 @@ export class SkillModal extends Component {
                                 <div className="col-sm-6">
                                     <label htmlFor="name" className=" control-label">Skill </label>
                                     <div className="input-group">
-                                        <span className="input-group-addon"><i className="fa fa-university fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" name="skill" id="skill" value={skillDetails.skill} placeholder="Ex: Data Science" />
+                                        <span className="input-group-addon"><i className="fa fa-star fa" aria-hidden="true"></i></span>
+                                        <input type="text" className="form-control" onChange={this.handleChange} name="skill" id="skill" value={this.state.skill} placeholder="Ex: Data Science" />
                                     </div>
                                 </div>
                             </div>

@@ -60,7 +60,7 @@ export class PersonalInfoSection extends Component {
                                 <div className="form-group">
 
                                     <div className="col-sm-6">
-                                        <label htmlFor="email" className=" control-label">DOB</label>
+                                        <label htmlFor="dob" className=" control-label">DOB</label>
                                         <div className="input-group date" id="dobDatePicker">
                                             <span className="input-group-addon"><i className="fa fa-calendar " aria-hidden="true"></i></span>
                                             <input type='text' className="form-control" name="dob" id="dob" placeholder="Date of birth" value={info.dob} />

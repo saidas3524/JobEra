@@ -7,9 +7,9 @@ export const Experience = ({experience}) => {
                 <div className="profileCard"><i className="fa fa-building-o fa-4x "></i></div>
             </div>
             <div className='col-xs-10'>
-                <div className="row">University</div>
-                <div className="row">Computer Science </div>
-                <div className="row">2011-2015</div>
+                <div className="row">{experience.title}</div>
+                <div className="row">{`${experience.company}, ${experience.location}`} </div>
+                <div className="row">{`${experience.fromYear}-${experience.toYear}`}</div>
             </div>
         </div>
     )

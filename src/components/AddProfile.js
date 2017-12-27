@@ -1,77 +1,65 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import  PersonalInfoSection  from "../components/PersonalInfoSection";
-import { EducationSection,ExperienceSection,SkillsSection } from "../components";
+import PersonalInfoSection from "../components/PersonalInfoSection";
+import { EducationSection, ExperienceSection, SkillsSection } from "../components";
 
 import './AddProfile.css';
+import { CommonSection } from '../components';
 
 export class AddProfile extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      educations:[{
+      sections: [
+        {
+          code: "edu",
+          values: [],
+        },
+        {
+          code: "exp",
+          values: [],
+        },
+        {
+          code: "skill",
+          values: []
+        }
+      ]
 
-        institute: "Top",
-        fromYear: "2015",
-        toYear: "2017",
-        degree: "BE",
-        branch: "CSE",
-        grade: "99%"
-      
-      },
-      {
-        institute: "Top",
-        fromYear: "2015",
-        toYear: "2017",
-        degree: "BE",
-        branch: "CSE",
-        grade: "99%"
-      }
-        
-      ],
-      experiences:[{
-        title: "SE",
-        company: "Microasof",
-        location: "redminf",
-        fromYear: "2017",
-        toYear: "2019",
-      },{
-        title: "SE",
-        company: "Microasof",
-        location: "redminf",
-        fromYear: "2017",
-        toYear: "2019",
-      }],
-      skills:[{
-        Name:"skill1"
-      },{
-        Name:"skill2"
-      }]
     }
   }
 
+  onAdd = (type,value)=>{
+
+    var sections = this.state.sections;
+    sections.forEach((section)=>{
+      if(section.code === type){
+        section.values.push(value);
+      }
+    })
+    this.setState({
+      sections : sections
+    })
+  }
+
   render() {
-    const {educations} = this.state;
-    const { experiences} = this.state;
-    const {skills} = this.state;
+    const { sections } = this.state;
     return (
       <div>
         <PersonalInfoSection />
-        <EducationSection educations={educations}/>
-        <ExperienceSection experiences={experiences}/>
-        <SkillsSection skills={skills}/>
+
+       { sections && sections.map((section,index)=> {return <CommonSection type={section.code} key={index} values={section.values} onAdd={this.onAdd}/>})}
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  
-})
+const mapStateToProps = (state) => {
+  return {
 
-const mapDispatchToProps =(dispatch)=> {
-  
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddProfile)
+
+
+export default connect(mapStateToProps, null)(AddProfile)

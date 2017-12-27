@@ -3,7 +3,7 @@ import React from 'react'
 export const Skill = ({ skill }) => {
     return (
         <div>
-            <p>{skill.Name}</p>
+            <p>{skill.skill}</p>
         </div>
     )
 }

@@ -20,12 +20,10 @@ export {Actions} from './actions'
 export{AddProfile} from './AddProfile'
 export{SearchProfiles} from './SearchProfiles';
 export {PersonalInfoSection} from './PersonalInfoSection';
-export {ExperienceSection} from './ExperienceSection';
+export {CommonSection} from './CommonSection';
 
-export {EducationSection} from './EducationSection';
 export {CommonSectionCard} from './CommonSectionCard';
 
-export {SkillsSection} from './SkillsSection';
 
 export {EducationModal} from './EducationModal';
 

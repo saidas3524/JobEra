@@ -7,9 +7,9 @@ export const Education = ({education}) => {
                 <div className="profileCard"><i className="fa fa-university fa-4x "></i></div>
             </div>
             <div className='col-xs-10'>
-                <div className="row">University</div>
-                <div className="row">Computer Science </div>
-                <div className="row">2011-2015</div>
+                <div className="row">{education.institute}</div>
+                <div className="row">{`${education.degree}, ${education.branch}`} </div>
+                <div className="row">{`${education.fromYear}-${education.toYear}`}</div>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { EducationModal, ExperienceModal, SkillModal } from "../components";
-import { sections } from "../services";
+import { sections,sectionTypes } from "../services";
 
 
 export class CommonSectionCard extends Component {
@@ -27,13 +27,15 @@ export class CommonSectionCard extends Component {
     }
     AddValuetoSection = (value) => {
         console.log(value);
+        this.props.onAdd(value);
         this.close();
     }
 
 
     render() {
 
-        const { sectionDetails } = this.props;
+        const { type } = this.props;
+        let sectionDetails = sections.filter(function (section) { return section.code == type })[0];
         const { children } = this.props;
         return (
             <div>
@@ -50,13 +52,13 @@ export class CommonSectionCard extends Component {
                         <div>{children}</div>
                     </div>
                 </div>
-                {sectionDetails.code === sections.Education.code &&
+                {type === sectionTypes.Education &&
                     <EducationModal show={this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails={sectionDetails} close={this.close} />}
 
-                {sectionDetails.code === sections.Experience.code &&
+                {type === sectionTypes.Experience &&
                     <ExperienceModal show={this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails={sectionDetails} close={this.close} />}
 
-                {sectionDetails.code === sections.Skills.code &&
+                {type === sectionTypes.Skills &&
                     <SkillModal show={this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails={sectionDetails} close={this.close} />}
             </div>
 

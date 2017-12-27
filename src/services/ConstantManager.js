@@ -1,17 +1,22 @@
-export const sections = {
-    Education: {
+export const sections = [
+    {
         title: "Education",
-        code:"edu"
+        code: "edu"
 
     },
-    Experience: {
-            title: "Experience",
-            code:"exp"
+    {
+        title: "Experience",
+        code: "exp"
 
-        },
-    Skills: {
-            title: "Skills",
-            code:"skill"
+    },
+    {
+        title: "Skills",
+        code: "skill"
 
-        }
+    }
+]
+export const sectionTypes = {
+    Education:"edu",
+    Skills:"skill",
+    Experience:"exp"
 }
