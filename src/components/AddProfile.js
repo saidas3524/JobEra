@@ -49,6 +49,7 @@ export class AddProfile extends Component {
         <PersonalInfoSection />
 
        { sections && sections.map((section,index)=> {return <CommonSection type={section.code} key={index} values={section.values} onAdd={this.onAdd}/>})}
+       
       </div>
     )
   }

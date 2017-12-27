@@ -4,7 +4,7 @@ import React from 'react';
 export const Profile = (props) => {
     const{profile} = props;
     return (
-        <div className="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+        <div className="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile animated fadeInLeft">
             <div className="img-box main-login ">
             <ul className="text-center">
                     <a href="#"><span className="fa-stack fa-2x">
