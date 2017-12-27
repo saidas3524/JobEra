@@ -61,7 +61,7 @@ class SearchProfiles extends Component {
                       </div>
                   </form>
                   {filteredProfiles && filteredProfiles.length ==0 && <div className="animated fadeInUp"> Sorry! No Profiles to show</div>}
-                  {filteredProfiles && filteredProfiles.length >0 && filteredProfiles.map((profile) => { return <Profile profile={profile} /> })}
+                  {filteredProfiles && filteredProfiles.length > 0 && filteredProfiles.map((profile) => { return <Profile profile={profile} /> })}
 
                 </div>
               </div>
