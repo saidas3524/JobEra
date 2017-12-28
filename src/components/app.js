@@ -16,6 +16,8 @@ import {
     
 } from 'react-router-dom';
 import SearchProfiles from "../components/SearchProfiles";
+import { Spinner2 } from './common/spinner2';
+import { pendingAPICallsSelector } from '../selectors/pendingAPICallsSelector';
 export class App extends Component {
 
     constructor(props) {
@@ -48,6 +50,7 @@ export class App extends Component {
                     <Route exact path={match.path} render={(props) => (<Actions actionClicked={this.actionClicked} {...props}/>)} />
                     <Route  path={`${match.path}search`} component={SearchProfiles}/>
                     <Route  path={`${match.path}Add`} component={AddProfile}/>
+                    {this.props.pendingCalls>0 && <Spinner2/>}
                 </div>
 
 
@@ -66,8 +69,11 @@ const mapDispatchToProps = (dispatch) => (
 const mapStateToProps = (state) => {
     var user = userSelector(state);
     user = user ? user.toJS() : user
+    var pendingCalls = pendingAPICallsSelector(state);
+    pendingCalls = pendingCalls ? pendingCalls.toJS() : pendingCalls;
     return {
-        user: user
+        user: user,
+        pendingCalls : pendingCalls
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

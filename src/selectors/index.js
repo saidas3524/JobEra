@@ -5,3 +5,4 @@ export { registrationStatusSelector } from "./registrationStatusSelector";
 
 export {userSelector,tokenSelector} from './userSelector.js';
 export {profilesSelector} from './profilesSelector';   
+export {pendingAPICallsSelector} from './pendingAPICallsSelector';
