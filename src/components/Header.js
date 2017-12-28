@@ -39,7 +39,7 @@ export class Header extends Component {
                     <Navbar.Header>
                         <div className="row">
                             <div className="col-xs-10">
-                                <img id="logo" style={{cursor:"pointer"}} onClick={this.logoClicked} className="center-block logo_registerPage" src={logo} />
+                                {/* <img id="logo" style={{cursor:"pointer"}} onClick={this.logoClicked} className="center-block logo_registerPage" src={logo} /> */}
                             </div>
                             <div className="col-xs-2">
                                 <Navbar.Toggle />

@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, ModalBody, ModalHeader, ModalFooter, ModalTitle, Button } from "react-bootstrap";
-import '../../node_modules/moment/min/moment.min.js';
-import '../../node_modules/bootstrap/js/collapse.js';
-import '../../node_modules/bootstrap/js/transition.js';
-import '../../node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js';
+var DateTime = require('react-datetime');
 
-import '../../node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
-import './datepicker.js';
 
 export class EducationModal extends Component {
 
@@ -44,21 +39,22 @@ export class EducationModal extends Component {
         
     }
 
-    addEvents=()=>{
-        $(function () {
-            $('#toYearEDM').datetimepicker({
-                viewMode: 'years',
-                format: 'DD/MM/YYYY'
-            });
-        });
-        
-        $(function () {
-            $('#fromYearEDM').datetimepicker({
-                viewMode: 'years',
-                format: 'DD/MM/YYYY'
-            });
-        });
+    fromYearChanged = (event)=>{
+            this.handleChange({target:{
+                name:"fromYear",
+                value:event._d
+            }})
     }
+
+    
+    toYearChanged = (event)=>{
+        this.handleChange({target:{
+            name:"toYear",
+            value:event._d
+        }})
+    }
+
+  
     
     render() {
         
@@ -66,7 +62,7 @@ export class EducationModal extends Component {
         
         const { show } = this.props;
         return (
-            <Modal onEntered={this.addEvents}   show={show} onHide={this.close}  backdrop={'static'}>
+            <Modal   show={show} onHide={this.close}  backdrop={'static'}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add {sectionDetails.title} Section</Modal.Title>
                 </Modal.Header>
@@ -114,7 +110,9 @@ export class EducationModal extends Component {
                                     <label htmlFor="name" className=" control-label">From Year</label>
                                     <div className="input-group date" id="fromYearEDM"> 
                                         <span className="input-group-addon"><i className="fa fa-calendar-minus-o fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" name="fromYear" id="fromYear" onChange={this.handleChange} value={this.state.fromYear} placeholder="From Year" />
+                                        {/* <input type="text" className="form-control" name="fromYear" id="fromYear" onChange={this.handleChange} value={this.state.fromYear} placeholder="From Year" /> */}
+                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps = {{placeholder:"From Year",name:"fromYear",className:"form-control"}} onChange={this.fromYearChanged}  value={this.state.fromYear}/>
+
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +121,7 @@ export class EducationModal extends Component {
                                     <label htmlFor="name" className=" control-label">To Year</label>
                                     <div className="input-group date" id="toYearEDM">
                                         <span className="input-group-addon"><i className="fa fa-calendar-plus-o fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" name="toYear" id="toYear" onChange={this.handleChange} value={this.state.toYear} placeholder="Completion Year" />
+                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps = {{placeholder:"To Year",name:"toYear",className:"form-control"}} onChange={this.toYearChanged}  value={this.state.toYear}/>
                                     </div>
                                 </div>
                             </div>

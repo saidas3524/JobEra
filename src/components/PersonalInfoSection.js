@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import '../../node_modules/moment/min/moment.min.js';
-import '../../node_modules/bootstrap/js/collapse.js';
-import '../../node_modules/bootstrap/js/transition.js';
-import '../../node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js';
+import "../../node_modules/react-datetime/css/react-datetime.css";
 
-import '../../node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
-import './datepicker.js';
+
+var DateTime = require('react-datetime');
 
 
 export class PersonalInfoSection extends Component {
@@ -16,9 +13,22 @@ export class PersonalInfoSection extends Component {
        
     }
 
+  
+
+  
+
     handleChange=(event)=>{
 
         this.props.handleChange(event);
+
+    }
+
+    dobDateChanged = (event)=>{
+
+        this.handleChange({target:{
+            name:"dob",
+            value:event._d
+        }})
 
     }
     render() {
@@ -27,7 +37,7 @@ export class PersonalInfoSection extends Component {
 
         return (
             <div>
-
+                
                 <div className="card-effect card-center makeInner animated fadeInDown">
                     <div className="profileCard text-center"><i className="fa fa-user-circle userImg "></i></div>
                     <div className="infoSection">
@@ -60,7 +70,8 @@ export class PersonalInfoSection extends Component {
                                         <label htmlFor="dob" className=" control-label">DOB</label>
                                         <div className="input-group date" id="dobDatePicker">
                                             <span className="input-group-addon"><i className="fa fa-calendar " aria-hidden="true"></i></span>
-                                            <input type='text' className="form-control" name="dob" id="dob" onChange={this.handleChange} placeholder="Date of birth" value={personalInfo.dob} />
+                                            {/* <input type='text' className="form-control" name="dob" id="dob" onChange={this.handleChange} placeholder="Date of birth" value={personalInfo.dob} /> */}
+                                            <DateTime timeFormat={false} inputProps = {{placeholder:"Date of birth",name:"dob",className:"form-control"}} onChange={this.dobDateChanged}  value={personalInfo.dob}/>
                                         </div>
                                     </div>
                                 </div>
