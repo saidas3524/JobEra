@@ -6,20 +6,21 @@ import { EducationSection, ExperienceSection, SkillsSection } from "../component
 
 import './AddProfile.css';
 import { CommonSection } from '../components';
+import { saveProfile } from "../actions";
 
 export class AddProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      personalInfo:{
-        firstName:"",
-        lastName:"",
-        dob:"",
-        gender:"",
-        email:"",
-        mobile:"",
-        description:"",
-        address:""
+      personalInfo: {
+        firstName: "",
+        lastName: "",
+        dob: "",
+        gender: "",
+        email: "",
+        mobile: "",
+        description: "",
+        address: ""
       },
       sections: [
         {
@@ -39,20 +40,23 @@ export class AddProfile extends Component {
     }
   }
 
-  onAdd = (type,value)=>{
+  onAdd = (type, value) => {
 
     var sections = this.state.sections;
-    sections.forEach((section)=>{
-      if(section.code === type){
+    sections.forEach((section) => {
+      if (section.code === type) {
         section.values.push(value);
       }
     })
     this.setState({
-      sections : sections
+      sections: sections
     })
   }
 
-  
+  SaveClicked = ()=>{
+    this.props.saveProfile({...this.state});
+  }
+
   handleChange = (event) => {
     const target = event.target;
     const value = target.value;
@@ -60,20 +64,29 @@ export class AddProfile extends Component {
 
 
     var personalInfotemp = this.state.personalInfo;
-    personalInfotemp[name] = value;  
+    personalInfotemp[name] = value;
     this.setState({
-        personalInfo : personalInfotemp
+      personalInfo: personalInfotemp
     });
-}
+  }
 
   render() {
     const { sections } = this.state;
     return (
-      <div>
-        <PersonalInfoSection  {...this.state.personalInfo} handleChange={this.handleChange}/>
+      <div style={{margin:"30px 0px"}}>
+        <form>
+          <PersonalInfoSection  {...this.state.personalInfo} handleChange={this.handleChange} />
 
-       { sections && sections.map((section,index)=> {return <CommonSection type={section.code} key={index} values={section.values} onAdd={this.onAdd}/>})}
+          {sections && sections.map((section, index) => { return <CommonSection type={section.code} key={index} values={section.values} onAdd={this.onAdd} /> })}
+          <div className="text-center card-center" style={{marginTop:"30px"}}>
+            <div className="form-group">
+              <button type="button" onClick={this.SaveClicked} className="btn btn-primary btn-lg btn-block login-button">
+                Save Changes
+              </button>
+            </div>
 
+          </div>
+        </form>
       </div>
     )
   }
@@ -85,6 +98,15 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch)=>({
+  saveProfile(profile){
+    dispatch(saveProfile(profile));
+  }
+
+})
 
 
-export default connect(mapStateToProps, null)(AddProfile)
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddProfile)

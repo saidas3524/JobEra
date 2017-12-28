@@ -5,3 +5,5 @@ export  {loginSaga} from './loginSaga';
 export { getUserInfoSaga } from './getUserInfoSaga'
 
 export { getProfilesSaga } from './getProfilessaga'
+
+export {saveProfileSaga} from './saveProfileSaga';

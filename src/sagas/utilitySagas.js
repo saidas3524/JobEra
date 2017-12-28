@@ -15,7 +15,9 @@ export function* InvokeUrl(url, method, data) {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`
-        }
+        },
+        body: JSON.stringify(data)
+
     });
 
 

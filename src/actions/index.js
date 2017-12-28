@@ -6,3 +6,4 @@ export {login,LOGIN,LOGIN_STATUS,loginStatus} from './login';
 export {logout,logoutStatus,LOGOUT,LOGOUT_STATUS} from './logout';
 export {SUCCESS,FAILURE,PENDING} from './statusConstants';
 export {getProfiles,setProfiles,GET_PROFILES,SET_PROFILES} from './searchProfiles';
+export { SAVE_PROFILE,saveProfile,SAVE_PROFILE_STATUS,saveProfileStatus} from './saveProfile';

@@ -102,13 +102,13 @@ export class PersonalInfoSection extends Component {
                                 <div className="form-group">
                                     <div className="col-sm-12">
                                         <label htmlFor="address">Description</label>
-                                        <textarea className="form-control" maxLength="256" name="description" id="description" rows="3" value={personalInfo.description}></textarea>
+                                        <textarea className="form-control" maxLength="256" name="description" id="description" rows="3" onChange={this.handleChange} value={personalInfo.description}></textarea>
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <div className="col-sm-12">
                                         <label htmlFor="address">Address</label>
-                                        <textarea className="form-control" name="address" id="address" rows="3" onChange={this.handleChange} value={personalInfo.description}></textarea>
+                                        <textarea className="form-control" name="address" id="address" rows="3" onChange={this.handleChange} value={personalInfo.address}></textarea>
                                     </div>
                                 </div>
                             </form>

@@ -4,7 +4,7 @@ export const Experience = ({experience}) => {
     return (
         <div className="row">
             <div className="col-xs-2">
-                <div className="profileCard"><i className="fa fa-building-o fa-4x "></i></div>
+                <div className="profileCard"><i className="fa fa-briefcase fa-4x "></i></div>
             </div>
             <div className='col-xs-10'>
                 <div className="row">{experience.title}</div>
