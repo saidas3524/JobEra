@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import logo from '../images/jobEra.png';
 
 import { login } from "../actions";
-import { Spinner2 } from "../components";
+import { Spinner } from "../components";
 import { loginStatusSelector } from '../selectors/loginStatusSelector';
 import { PENDING,SUCCESS,FAILURE } from '../actions/statusConstants';
 
@@ -64,7 +64,7 @@ export class Login extends Component {
                         <div className="panel-heading">
                             <div className="panel-title text-center">
 
-                                <img className="logo_registerPage" src={logo} />
+                                {/* <img className="logo_registerPage" src={logo} /> */}
                             </div>
                         </div>
                         <form className="form-horizontal" method="post" action="#">
@@ -91,7 +91,7 @@ export class Login extends Component {
 
                             <div className="form-group">
                                 <button type="button" onClick={this.LoginClicked} className="btn btn-primary btn-lg btn-block login-button">
-                                {this.props.isLoggingIn ?  <Spinner2/> : "Login"}
+                                {this.props.isLoggingIn ?  <Spinner local/> : "Login"}
                                 </button>
                             </div>
                             <div className="login-register">

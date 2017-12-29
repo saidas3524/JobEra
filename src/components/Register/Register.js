@@ -7,7 +7,7 @@ import logo from '../../images/jobEra.png';
 import { saveUserRegistration } from '../../actions';
 import { registrationStatusSelector } from '../../selectors/registrationStatusSelector';
 import { PENDING, SUCCESS } from '../../actions/statusConstants';
-import { Spinner2 } from "../../components";
+import { Spinner } from "../../components";
 
 export class Register extends Component {
     constructor(props) {
@@ -138,7 +138,7 @@ export class Register extends Component {
                                 <div className="form-group">
                                     <button type="button" onClick={this.RegisterClicked} className="btn btn-primary btn-lg btn-block login-button">
 
-                                        {this.props.isRegistering ? <Spinner2 /> : "Register"}
+                                        {this.props.isRegistering ? <Spinner local/> : "Register"}
 
                                     </button>
                                 </div>

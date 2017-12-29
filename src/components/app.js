@@ -13,10 +13,10 @@ import { getUser } from '../actions/setUserInfo';
 import AddProfile from "../components/AddProfile";
 import {
     Route
-    
+
 } from 'react-router-dom';
 import SearchProfiles from "../components/SearchProfiles";
-import { Spinner2 } from './common/spinner2';
+import { Spinner } from './common/spinner';
 import { pendingAPICallsSelector } from '../selectors/pendingAPICallsSelector';
 export class App extends Component {
 
@@ -43,15 +43,17 @@ export class App extends Component {
     }
     render() {
         const { user } = this.props;
-        const {match} = this.props;
+        const { match } = this.props;
         return (
-                <div className="app"  >
-                    <Header user={user} logoClicked={this.logoClicked} actionClicked={this.actionClicked} logOutClicked={this.logOutClicked} />
-                    <Route exact path={match.path} render={(props) => (<Actions actionClicked={this.actionClicked} {...props}/>)} />
-                    <Route  path={`${match.path}search`} component={SearchProfiles}/>
-                    <Route  path={`${match.path}Add`} component={AddProfile}/>
-                    {this.props.pendingCalls>0 && <Spinner2/>}
-                </div>
+            <div className="app"  >
+
+                {this.props.pendingCalls > 0 && <Spinner />}
+                <Header user={user} logoClicked={this.logoClicked} actionClicked={this.actionClicked} logOutClicked={this.logOutClicked} />
+                <Route exact path={match.path} render={(props) => (<Actions actionClicked={this.actionClicked} {...props} />)} />
+                <Route path={`${match.path}search`} component={SearchProfiles} />
+                <Route path={`${match.path}Add`} component={AddProfile} />
+
+            </div>
 
 
         );
@@ -70,10 +72,9 @@ const mapStateToProps = (state) => {
     var user = userSelector(state);
     user = user ? user.toJS() : user
     var pendingCalls = pendingAPICallsSelector(state);
-    pendingCalls = pendingCalls ? pendingCalls.toJS() : pendingCalls;
     return {
         user: user,
-        pendingCalls : pendingCalls
+        pendingCalls: pendingCalls
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
