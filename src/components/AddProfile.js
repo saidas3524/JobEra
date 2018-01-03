@@ -7,6 +7,7 @@ import { EducationSection, ExperienceSection, SkillsSection } from "../component
 import './AddProfile.css';
 import { CommonSection } from '../components';
 import { saveProfile } from "../actions";
+import { sections as Sections } from "../services";
 
 export class AddProfile extends Component {
   constructor(props) {
@@ -54,7 +55,20 @@ export class AddProfile extends Component {
   }
 
   SaveClicked = ()=>{
-    this.props.saveProfile({...this.state});
+
+    var profile = {...this.state};
+    const {sections} = profile;
+
+    sections.forEach((section)=>{
+      var sectionApiTitle = Sections.filter(function(sec){
+        return sec.code === section.code;
+      })[0].apiTitle;
+
+      profile[sectionApiTitle] = section.values;
+
+    })
+    delete profile.sections;
+    this.props.saveProfile(profile);
   }
 
   handleChange = (event) => {
