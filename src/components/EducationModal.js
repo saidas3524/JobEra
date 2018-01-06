@@ -31,11 +31,27 @@ export class EducationModal extends Component {
     close = () => {
       
         this.props.close();
+        this.setState({
+            institute: "",
+            fromYear: "",
+            toYear: "",
+            degree: "",
+            branch: "",
+            grade: ""
+        })
     }
     AddClose=()=>{
         this.props.onAdd({
             ...this.state
         });
+        this.setState({
+            institute: "",
+            fromYear: "",
+            toYear: "",
+            degree: "",
+            branch: "",
+            grade: ""
+        })
         
     }
 

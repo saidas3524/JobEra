@@ -5,5 +5,6 @@ export {profiles} from './profiles';
 export {registrationStatus} from './registrationStatus';
 export {saveProfileStatus} from './saveProfileStatus';
 export {pendingAPICalls} from './pendingAPICalls';
+export {profile} from './profile';
 
 

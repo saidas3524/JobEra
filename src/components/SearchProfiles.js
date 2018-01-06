@@ -5,6 +5,7 @@ import { profilesSelector } from '../selectors';
 import { Profile } from "../components";
 import "./searchProfile.css";
 import { arrayFilter } from '../utility';
+import { ProfileActions } from "../services";
 
 
 class SearchProfiles extends Component {
@@ -15,13 +16,20 @@ class SearchProfiles extends Component {
       filteredProfiles: props.profiles
     }
     this.filterSearchresults = this.filterSearchresults.bind(this);
+    this.actionClicked = this.actionClicked.bind(this);
+  }
+  actionClicked(action, id) {
+    if (action === ProfileActions.View || action === ProfileActions.Edit) {
+      this.props.history.push(`/View/${id}`);
+
+    }
   }
   componentWillMount() {
     this.props.getAllProfiles();
   }
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.state.filteredProfiles = nextProps.profiles;
- }
+  }
   handleChange = (event) => {
     const target = event.target;
     const value = target.value;
@@ -30,13 +38,13 @@ class SearchProfiles extends Component {
     this.setState({
       [name]: value
     });
-    if(name ==="filter"){
+    if (name === "filter") {
       this.filterSearchresults(value);
     }
   }
-  filterSearchresults=(value)=>{
-    let fieldsToSearch = ["firstName","lastName","title","description"];
-    var filteredResults = arrayFilter(this.props.profiles,fieldsToSearch,value);
+  filterSearchresults = (value) => {
+    let fieldsToSearch = ["firstName", "lastName", "title", "description"];
+    var filteredResults = arrayFilter(this.props.profiles, fieldsToSearch, value);
     this.setState({
       filteredProfiles: filteredResults
     })
@@ -54,14 +62,14 @@ class SearchProfiles extends Component {
                 <div className="row pt-md">
                   <form>
                     <div id="searchFilter" className="form-group animated fadeInDown">
-                        <div className="input-group">
-                          <span className="input-group-addon"><i className="fa fa-filter fa" aria-hidden="true"></i></span>
-                          <input type="text" className="form-control" onChange={this.handleChange} name="filter" id="filter" value={filter} placeholder="Filter by Name or Title Or Description" />
-                        </div>
+                      <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-filter fa" aria-hidden="true"></i></span>
+                        <input type="text" className="form-control" onChange={this.handleChange} name="filter" id="filter" value={filter} placeholder="Filter by Name or Title Or Description" />
                       </div>
+                    </div>
                   </form>
-                  {filteredProfiles && filteredProfiles.length ==0 && <div className="animated fadeInUp"> Sorry! No Profiles to show</div>}
-                  {filteredProfiles && filteredProfiles.length > 0 && filteredProfiles.map((profile) => { return <Profile profile={profile} /> })}
+                  {filteredProfiles && filteredProfiles.length == 0 && <div className="animated fadeInUp"> Sorry! No Profiles to show</div>}
+                  {filteredProfiles && filteredProfiles.length > 0 && filteredProfiles.map((profile) => { return <Profile profile={profile} actionClicked={this.actionClicked} /> })}
 
                 </div>
               </div>

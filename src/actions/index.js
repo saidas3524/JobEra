@@ -8,3 +8,5 @@ export {SUCCESS,FAILURE,PENDING} from './statusConstants';
 export {getProfiles,setProfiles,GET_PROFILES,SET_PROFILES} from './searchProfiles';
 export { SAVE_PROFILE,saveProfile,SAVE_PROFILE_STATUS,saveProfileStatus} from './saveProfile';
 export {INCREMENT_NO_OF_CALLS,incrementPendingAPICalls,DECREMENT_NO_OF_CALLS,decrementPendingAPICalls} from './pendingAPICalls';
+
+export {getProfileById,GET_PROFILE,setProfileById,SET_PROFILE} from './profile'

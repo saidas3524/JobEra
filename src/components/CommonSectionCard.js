@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { EducationModal, ExperienceModal, SkillModal } from "../components";
-import { sections,sectionTypes } from "../services";
+import { sections, sectionTypes } from "../services";
+import { ProfileModes } from '../services/ConstantManager';
 
 
 export class CommonSectionCard extends Component {
@@ -37,6 +38,7 @@ export class CommonSectionCard extends Component {
         const { type } = this.props;
         let sectionDetails = sections.filter(function (section) { return section.code == type })[0];
         const { children } = this.props;
+        const { mode } = this.props;
         return (
             <div>
                 <div className="addProfileSection">
@@ -45,9 +47,9 @@ export class CommonSectionCard extends Component {
                             <div className="col-xs-10 col-sm-6 sectionHeading">
                                 <p>{sectionDetails && sectionDetails.title}</p>
                             </div>
-                            <div className="col-xs-2 col-sm-1 text-center pull-right" onClick={this.onAddClick}>
+                            {mode != ProfileModes.VIEW && <div className="col-xs-2 col-sm-1 text-center pull-right" onClick={this.onAddClick}>
                                 <span><i className="fa fa-plus"></i></span>
-                            </div>
+                            </div>}
                         </div>
                         <div>{children}</div>
                     </div>

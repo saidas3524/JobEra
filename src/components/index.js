@@ -36,3 +36,7 @@ export {Skill} from './Skill';
 export {Experience} from './Experience';
 
 export {Education} from './Education';
+
+export {ProfileActionButton} from './ProfileActionButton';
+
+export {ViewProfile} from './ViewProfile'; 

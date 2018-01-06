@@ -7,11 +7,11 @@ export class SkillModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
-                skill: ""
-            
-        }
-        this.close = this.close.bind(this);
+
+            skill: ""
+
+        };
+            this.close = this.close.bind(this);
     }
     handleChange = (event) => {
         const target = event.target;
@@ -25,11 +25,17 @@ export class SkillModal extends Component {
     close = () => {
 
         this.props.close();
+        this.setState({
+            skill:""
+        })
     }
     AddClose = () => {
         this.props.onAdd({
             ...this.state
         });
+        this.setState({
+            skill:""
+        })
 
     }
 

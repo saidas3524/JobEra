@@ -1,24 +1,30 @@
 import React from 'react';
+import { ProfileActions } from "../services";
+import { ProfileActionButton } from "../components";
 
 
 export const Profile = (props) => {
     const{profile} = props;
+    const actionClicked = (action)=>{
+        props.actionClicked(action,profile._id);
+    }
     return (
         <div className="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile animated fadeInLeft">
             <div className="img-box main-login ">
             <ul className="text-center">
-                    <a href="#"><span className="fa-stack fa-2x">
-                        <i className="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i className="fa fa-eye fa-stack-1x fa-inverse"></i>
-                    </span></a>
-                    <a href="#"><span className="fa-stack fa-2x">
+                    <ProfileActionButton action={ProfileActions.View} onActionClicked={actionClicked}/>
+                    <ProfileActionButton action={ProfileActions.Edit} onActionClicked={actionClicked}/>
+
+                    <ProfileActionButton action={ProfileActions.Delete} onActionClicked={actionClicked}/>
+
+                    {/* <a href="#" ><span className="fa-stack fa-2x">
                         <i className="fa fa-circle fa-stack-2x text-primary"></i>
                         <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
                     </span></a>
                     <a href="#"><span className="fa-stack fa-2x">
                         <i className="fa fa-circle fa-stack-2x text-primary"></i>
                         <i className="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                    </span></a>
+                    </span></a> */}
 
                     {/* <a href="#"><li><i className="fa fw-2x fa-pencil"></i></li></a> */}
                     {/* <a href="#"><li><i className="fa fa-2x fa-trash-o"></i></li></a> */}

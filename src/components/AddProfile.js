@@ -8,6 +8,7 @@ import './AddProfile.css';
 import { CommonSection } from '../components';
 import { saveProfile } from "../actions";
 import { sections as Sections } from "../services";
+import { ProfileModes } from '../services/ConstantManager';
 
 export class AddProfile extends Component {
   constructor(props) {
@@ -57,17 +58,17 @@ export class AddProfile extends Component {
   SaveClicked = ()=>{
 
     var profile = {...this.state};
-    const {sections} = profile;
+    // const {sections} = profile;
 
-    sections.forEach((section)=>{
-      var sectionApiTitle = Sections.filter(function(sec){
-        return sec.code === section.code;
-      })[0].apiTitle;
+    // sections.forEach((section)=>{
+    //   var sectionApiTitle = Sections.filter(function(sec){
+    //     return sec.code === section.code;
+    //   })[0].apiTitle;
 
-      profile[sectionApiTitle] = section.values;
+    //   profile[sectionApiTitle] = section.values;
 
-    })
-    delete profile.sections;
+    // })
+    // delete profile.sections;
     this.props.saveProfile(profile);
   }
 
@@ -89,9 +90,9 @@ export class AddProfile extends Component {
     return (
       <div style={{margin:"30px 0px"}}>
         <form>
-          <PersonalInfoSection  {...this.state.personalInfo} handleChange={this.handleChange} />
+          <PersonalInfoSection  {...this.state.personalInfo} mode = {ProfileModes.CREATE} handleChange={this.handleChange} />
 
-          {sections && sections.map((section, index) => { return <CommonSection type={section.code} key={index} values={section.values} onAdd={this.onAdd} /> })}
+          {sections && sections.map((section, index) => { return <CommonSection type={section.code} key={index} values={section.values} mode={ProfileModes.CREATE} onAdd={this.onAdd} /> })}
           <div className="text-center card-center" style={{marginTop:"30px"}}>
             <div className="form-group">
               <button type="button" onClick={this.SaveClicked} className="btn btn-primary btn-lg btn-block login-button">

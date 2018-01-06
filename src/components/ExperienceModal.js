@@ -52,12 +52,27 @@ export class ExperienceModal extends Component {
     close = () => {
 
         this.props.close();
+        this.setState({
+
+            title: "",
+            company: "",
+            location: "",
+            fromYear: "",
+            toYear: ""
+        });
     }
     AddClose = () => {
         this.props.onAdd({
             ...this.state
         });
+        this.setState({
 
+            title: "",
+            company: "",
+            location: "",
+            fromYear: "",
+            toYear: "",
+        })
     }
 
 
@@ -106,7 +121,7 @@ export class ExperienceModal extends Component {
                                     <label htmlFor="name" className=" control-label">From Year</label>
                                     <div className="input-group date" id="fromYearEM">
                                         <span className="input-group-addon"><i className="fa fa-calendar-minus-o fa" aria-hidden="true"></i></span>
-                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps = {{placeholder:"From Year",name:"fromYear",className:"form-control"}} onChange={this.fromYearChanged}  value={this.state.fromYear}/>
+                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps={{ placeholder: "From Year", name: "fromYear", className: "form-control" }} onChange={this.fromYearChanged} value={this.state.fromYear} />
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +130,7 @@ export class ExperienceModal extends Component {
                                     <label htmlFor="name" className=" control-label">To Year</label>
                                     <div className="input-group date" id="toYearEM">
                                         <span className="input-group-addon"><i className="fa fa-calendar-plus-o fa" aria-hidden="true"></i></span>
-                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps = {{placeholder:"To Year",name:"toYear",className:"form-control"}} onChange={this.toYearChanged}  value={this.state.toYear}/>
+                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps={{ placeholder: "To Year", name: "toYear", className: "form-control" }} onChange={this.toYearChanged} value={this.state.toYear} />
                                     </div>
                                 </div>
                             </div>

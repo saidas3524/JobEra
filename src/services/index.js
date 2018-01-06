@@ -1,2 +1,2 @@
 export {getToken,setToken,isAuthenticated,removeToken} from "./TokenManager";
-export {sections,sectionTypes} from './ConstantManager'; 
+export {sections,sectionTypes,ProfileActions,ProfileModes} from './ConstantManager'; 

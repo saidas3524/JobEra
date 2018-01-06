@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import "../../node_modules/react-datetime/css/react-datetime.css";
+import { ProfileModes } from '../services/ConstantManager';
 
 
 var DateTime = require('react-datetime');
@@ -10,38 +11,40 @@ var DateTime = require('react-datetime');
 export class PersonalInfoSection extends Component {
     constructor(props) {
         super(props);
-       
+
     }
 
-  
 
-  
 
-    handleChange=(event)=>{
+
+
+    handleChange = (event) => {
 
         this.props.handleChange(event);
 
     }
 
-    dobDateChanged = (event)=>{
+    dobDateChanged = (event) => {
 
-        this.handleChange({target:{
-            name:"dob",
-            value:event._d
-        }})
+        this.handleChange({
+            target: {
+                name: "dob",
+                value: event._d
+            }
+        })
 
     }
     render() {
-        var personalInfo = {...this.props};
+        const { mode, ...personalInfo } = this.props;
 
 
         return (
             <div>
-                
+
                 <div className="card-effect card-center makeInner animated fadeInDown">
                     <div className="profileCard text-center"><i className="fa fa-user-circle userImg "></i></div>
                     <div className="infoSection">
-                        <div className="row">
+                        {mode != ProfileModes.VIEW ? (<div className="row">
                             <form method="post" action="#">
 
                                 <div className="form-group">
@@ -60,7 +63,7 @@ export class PersonalInfoSection extends Component {
                                         <label htmlFor="email" className=" control-label">LastName</label>
                                         <div className="input-group">
                                             <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
-                                            <input type="text" className="form-control" name="lastName" id="lastName"onChange={this.handleChange} value={personalInfo.lastName} placeholder="Last Name" />
+                                            <input type="text" className="form-control" name="lastName" id="lastName" onChange={this.handleChange} value={personalInfo.lastName} placeholder="Last Name" />
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +74,7 @@ export class PersonalInfoSection extends Component {
                                         <div className="input-group date" id="dobDatePicker">
                                             <span className="input-group-addon"><i className="fa fa-calendar " aria-hidden="true"></i></span>
                                             {/* <input type='text' className="form-control" name="dob" id="dob" onChange={this.handleChange} placeholder="Date of birth" value={personalInfo.dob} /> */}
-                                            <DateTime timeFormat={false} inputProps = {{placeholder:"Date of birth",name:"dob",className:"form-control"}} onChange={this.dobDateChanged}  value={personalInfo.dob}/>
+                                            <DateTime timeFormat={false} inputProps={{ placeholder: "Date of birth", name: "dob", className: "form-control" }} onChange={this.dobDateChanged} value={personalInfo.dob} />
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +102,7 @@ export class PersonalInfoSection extends Component {
                                             <input type="text" className="form-control" name="email" id="email" onChange={this.handleChange} value={personalInfo.email} placeholder="Email address" />
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                                 <div className="form-group">
 
                                     <div className="col-sm-6">
@@ -123,9 +126,18 @@ export class PersonalInfoSection extends Component {
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                        <div>
-                        </div>
+                        </div>) : (<div className="row"><div className="text-center">
+                            <h4>{`${personalInfo.firstName} ${personalInfo.lastName}`}</h4>
+                            <p> {`${personalInfo.description}`}</p>
+
+                            <p> {`${personalInfo.DOB},${personalInfo.gender}`}</p>
+
+
+                            <p> {`${personalInfo.email},${personalInfo.mobile}`}</p>
+                            <p> {`${personalInfo.Address}`}</p>
+
+                        </div></div>)}
+
                     </div>
                 </div>
             </div>

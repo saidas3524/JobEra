@@ -25,3 +25,17 @@ export const sectionTypes = {
     Skills:"skill",
     Experience:"exp"
 }
+
+export const ProfileActions = {
+    View:"VIEW",
+    Edit:"EDIT",
+    Delete:"DELETE"
+
+}
+
+
+export const ProfileModes = {
+    CREATE:"CREATE",
+    EDIT:"EDIT",
+    VIEW:"VIEW"
+}
