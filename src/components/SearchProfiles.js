@@ -19,10 +19,13 @@ class SearchProfiles extends Component {
     this.actionClicked = this.actionClicked.bind(this);
   }
   actionClicked(action, id) {
-    if (action === ProfileActions.View || action === ProfileActions.Edit) {
-      this.props.history.push(`/View/${id}`);
-
+    if(action == ProfileActions.View){
+            this.props.history.push(`/View/${id}`);
     }
+    else if(action== ProfileActions.Edit) {
+      this.props.history.push(`/Edit/${id}`);
+    }
+
   }
   componentWillMount() {
     this.props.getAllProfiles();
