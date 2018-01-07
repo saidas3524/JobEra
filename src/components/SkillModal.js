@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
 import { Modal, ModalBody, ModalHeader, ModalFooter, ModalTitle, Button } from "react-bootstrap";
+import { sections, sectionTypes, ModalActions } from '../services/ConstantManager';
 
 
 export class SkillModal extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
+        
 
+        this.state ={
             skill: ""
+        }
 
-        };
             this.close = this.close.bind(this);
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.action === ModalActions.EDIT && nextProps.value)
+            this.state = { ...nextProps.value }
+        else {
+            this.state = {
+                skill: ""
+            }
+        }
     }
     handleChange = (event) => {
         const target = event.target;
@@ -26,22 +37,22 @@ export class SkillModal extends Component {
 
         this.props.close();
         this.setState({
-            skill:""
+            skill: ""
         })
     }
     AddClose = () => {
-        this.props.onAdd({
+        this.props.onAdd(this.props.index, {
             ...this.state
         });
         this.setState({
-            skill:""
+            skill: ""
         })
 
     }
 
     render() {
 
-        const { sectionDetails } = this.props;
+        var sectionDetails = sections.filter(function (section) { return section.code == sectionTypes.Skills })[0];
         const { show } = this.props;
         return (
             <Modal show={show} onHide={this.close} backdrop={'static'}>

@@ -39,3 +39,8 @@ export const ProfileModes = {
     EDIT:"EDIT",
     VIEW:"VIEW"
 }
+
+export const ModalActions = {
+    ADD:"ADD",
+    EDIT:"EDIT"
+}

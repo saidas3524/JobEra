@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, ModalBody, ModalHeader, ModalFooter, ModalTitle, Button } from "react-bootstrap";
+import { sections, sectionTypes, ModalActions } from '../services/ConstantManager';
 var DateTime = require('react-datetime');
 
 
@@ -7,15 +8,18 @@ export class EducationModal extends Component {
 
     constructor(props) {
         super(props);
+
+
         this.state = {
-         
-                institute: "",
-                fromYear: "",
-                toYear: "",
-                degree: "",
-                branch: "",
-                grade: ""
+
+            institute: "",
+            fromYear: "",
+            toYear: "",
+            degree: "",
+            branch: "",
+            grade: ""
         }
+
         this.close = this.close.bind(this);
     }
     handleChange = (event) => {
@@ -27,9 +31,9 @@ export class EducationModal extends Component {
             [name]: value
         });
     }
-   
+
     close = () => {
-      
+
         this.props.close();
         this.setState({
             institute: "",
@@ -40,8 +44,8 @@ export class EducationModal extends Component {
             grade: ""
         })
     }
-    AddClose=()=>{
-        this.props.onAdd({
+    AddClose = () => {
+        this.props.onAdd(this.props.index, {
             ...this.state
         });
         this.setState({
@@ -52,33 +56,50 @@ export class EducationModal extends Component {
             branch: "",
             grade: ""
         })
-        
+
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.action === ModalActions.EDIT && nextProps.value)
+            this.state = { ...nextProps.value }
+        else {
+            this.state = {
+                institute: "",
+                fromYear: "",
+                toYear: "",
+                degree: "",
+                branch: "",
+                grade: ""
+            }
+        }
     }
 
-    fromYearChanged = (event)=>{
-            this.handleChange({target:{
-                name:"fromYear",
-                value:event._d
-            }})
+    fromYearChanged = (event) => {
+        this.handleChange({
+            target: {
+                name: "fromYear",
+                value: event._d
+            }
+        })
     }
 
-    
-    toYearChanged = (event)=>{
-        this.handleChange({target:{
-            name:"toYear",
-            value:event._d
-        }})
+
+    toYearChanged = (event) => {
+        this.handleChange({
+            target: {
+                name: "toYear",
+                value: event._d
+            }
+        })
     }
 
-  
-    
+
+
     render() {
-        
-        const { sectionDetails } = this.props;
-        
+
+        var sectionDetails = sections.filter(function (section) { return section.code == sectionTypes.Education })[0];
         const { show } = this.props;
         return (
-            <Modal   show={show} onHide={this.close}  backdrop={'static'}>
+            <Modal show={show} onHide={this.close} backdrop={'static'}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add {sectionDetails.title} Section</Modal.Title>
                 </Modal.Header>
@@ -90,7 +111,7 @@ export class EducationModal extends Component {
                                     <label htmlFor="name" className=" control-label">Institute</label>
                                     <div className="input-group">
                                         <span className="input-group-addon"><i className="fa fa-university fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" name="institute" id="institute"  onChange={this.handleChange} value={this.state.institute} placeholder="University" />
+                                        <input type="text" className="form-control" name="institute" id="institute" onChange={this.handleChange} value={this.state.institute} placeholder="University" />
                                     </div>
                                 </div>
                             </div>
@@ -113,21 +134,21 @@ export class EducationModal extends Component {
                                 </div>
                             </div>
                             <div className="form-group">
-                             <div className="col-sm-6">
-                                <label htmlFor="name" className=" control-label">Grade</label>
-                                <div className="input-group">
-                                    <span className="input-group-addon"><i className="fa fa-line-chart fa" aria-hidden="true"></i></span>
-                                    <input type="text" className="form-control" name="grade" id="grade" onChange={this.handleChange} value={this.state.grade} placeholder="Grade" />
+                                <div className="col-sm-6">
+                                    <label htmlFor="name" className=" control-label">Grade</label>
+                                    <div className="input-group">
+                                        <span className="input-group-addon"><i className="fa fa-line-chart fa" aria-hidden="true"></i></span>
+                                        <input type="text" className="form-control" name="grade" id="grade" onChange={this.handleChange} value={this.state.grade} placeholder="Grade" />
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                             <div className="form-group">
                                 <div className="col-sm-6">
                                     <label htmlFor="name" className=" control-label">From Year</label>
-                                    <div className="input-group date" id="fromYearEDM"> 
+                                    <div className="input-group date" id="fromYearEDM">
                                         <span className="input-group-addon"><i className="fa fa-calendar-minus-o fa" aria-hidden="true"></i></span>
                                         {/* <input type="text" className="form-control" name="fromYear" id="fromYear" onChange={this.handleChange} value={this.state.fromYear} placeholder="From Year" /> */}
-                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps = {{placeholder:"From Year",name:"fromYear",className:"form-control"}} onChange={this.fromYearChanged}  value={this.state.fromYear}/>
+                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps={{ placeholder: "From Year", name: "fromYear", className: "form-control" }} onChange={this.fromYearChanged} value={this.state.fromYear} />
 
                                     </div>
                                 </div>
@@ -137,7 +158,7 @@ export class EducationModal extends Component {
                                     <label htmlFor="name" className=" control-label">To Year</label>
                                     <div className="input-group date" id="toYearEDM">
                                         <span className="input-group-addon"><i className="fa fa-calendar-plus-o fa" aria-hidden="true"></i></span>
-                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps = {{placeholder:"To Year",name:"toYear",className:"form-control"}} onChange={this.toYearChanged}  value={this.state.toYear}/>
+                                        <DateTime timeFormat={false} dateFormat="YYYY" inputProps={{ placeholder: "To Year", name: "toYear", className: "form-control" }} onChange={this.toYearChanged} value={this.state.toYear} />
                                     </div>
                                 </div>
                             </div>

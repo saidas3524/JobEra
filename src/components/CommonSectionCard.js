@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { EducationModal, ExperienceModal, SkillModal } from "../components";
 import { sections, sectionTypes } from "../services";
 import { ProfileModes } from '../services/ConstantManager';
 
@@ -11,25 +10,11 @@ export class CommonSectionCard extends Component {
             showDialog: false
 
         }
-        this.close.bind(this);
     }
 
 
     onAddClick = (event) => {
-        this.setState({
-            showDialog: true
-        })
-    }
-    close = () => {
-        this.setState({
-            showDialog: false
-        })
-
-    }
-    AddValuetoSection = (value) => {
-        console.log(value);
-        this.props.onAdd(value);
-        this.close();
+        this.props.onAddClick();
     }
 
 
@@ -54,14 +39,6 @@ export class CommonSectionCard extends Component {
                         <div>{children}</div>
                     </div>
                 </div>
-                {type === sectionTypes.Education &&
-                    <EducationModal show={this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails={sectionDetails} close={this.close} />}
-
-                {type === sectionTypes.Experience &&
-                    <ExperienceModal show={this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails={sectionDetails} close={this.close} />}
-
-                {type === sectionTypes.Skills &&
-                    <SkillModal show={this.state.showDialog} onAdd={this.AddValuetoSection} sectionDetails={sectionDetails} close={this.close} />}
             </div>
 
         );
