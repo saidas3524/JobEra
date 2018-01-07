@@ -8,16 +8,21 @@ export class ExperienceModal extends Component {
 
     constructor(props) {
         super(props);
+        if (props.action === ModalActions.ADD) {
 
-        this.state = {
+            this.state = {
 
-            title: "",
-            company: "",
-            location: "",
-            fromYear: "",
-            toYear: "",
+                title: "",
+                company: "",
+                location: "",
+                fromYear: "",
+                toYear: "",
 
 
+            }
+        }
+        else {
+            this.state = { ...props.value }
         }
         this.close = this.close.bind(this);
     }

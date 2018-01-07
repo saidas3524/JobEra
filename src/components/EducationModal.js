@@ -9,7 +9,9 @@ export class EducationModal extends Component {
     constructor(props) {
         super(props);
 
-
+        if(props.action ===  ModalActions.ADD)
+        {
+         
         this.state = {
 
             institute: "",
@@ -18,6 +20,9 @@ export class EducationModal extends Component {
             degree: "",
             branch: "",
             grade: ""
+        }}
+         else{
+            this.state = { ...props.value }
         }
 
         this.close = this.close.bind(this);
@@ -60,16 +65,16 @@ export class EducationModal extends Component {
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.action === ModalActions.EDIT && nextProps.value)
-            this.state = { ...nextProps.value }
+            this.setState( { ...nextProps.value });
         else {
-            this.state = {
+            this.setState({
                 institute: "",
                 fromYear: "",
                 toYear: "",
                 degree: "",
                 branch: "",
                 grade: ""
-            }
+            });
         }
     }
 

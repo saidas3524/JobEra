@@ -53,10 +53,10 @@ export class App extends Component {
                 <Header user={user} logoClicked={this.logoClicked} actionClicked={this.actionClicked} logOutClicked={this.logOutClicked} />
                 <Route exact path={match.path} render={(props) => (<Actions actionClicked={this.actionClicked} {...props} />)} />
                 <Route path={`${match.path}search`}  component={SearchProfiles} />
-                <Route path={`${match.path}View/:id`}render={(props)=>(<ViewProfile mode={ProfileModes.VIEW}{...props}/>)}  />
-                <Route path={`${match.path}Edit/:id`}render={(props)=>(<ViewProfile mode={ProfileModes.EDIT} {...props}/>)}  />
+                <Route path={`${match.path}View/:id`}render={(props)=>(<AddProfile mode={ProfileModes.VIEW}{...props}/>)}  />
+                <Route path={`${match.path}Edit/:id`}render={(props)=>(<AddProfile mode={ProfileModes.EDIT} {...props}/>)}  />
 
-                <Route path={`${match.path}Add`} component={AddProfile} />
+                <Route path={`${match.path}Add`} render={(props)=>(<AddProfile mode={ProfileModes.CREATE} {...props}/>)}   />
 
             </div>
 

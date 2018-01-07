@@ -7,13 +7,18 @@ export class SkillModal extends Component {
 
     constructor(props) {
         super(props);
-        
 
-        this.state ={
-            skill: ""
+        if(props.action ===  ModalActions.ADD)
+        {
+            this.state = {
+                skill: ""
+            }
+        }
+        else{
+            this.state = { ...props.value }
         }
 
-            this.close = this.close.bind(this);
+        this.close = this.close.bind(this);
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.action === ModalActions.EDIT && nextProps.value)
