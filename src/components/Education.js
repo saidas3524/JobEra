@@ -1,6 +1,8 @@
 import React from 'react';
 import { ProfileModes as modes } from "../services";
 import { sectionTypes } from '../services/ConstantManager';
+import YearDisplay from './YearDisplay';
+
 
 
 export const Education = ({education,mode,editClicked,deleteClicked}) => {
@@ -12,7 +14,7 @@ export const Education = ({education,mode,editClicked,deleteClicked}) => {
             <div className='col-xs-8'>
                 <div className="row">{education.institute}</div>
                 <div className="row">{`${education.degree}, ${education.branch}`} </div>
-                <div className="row">{`${education.fromYear}-${education.toYear}`}</div>
+                <div className="row"><YearDisplay date={education.fromYear}/>-<YearDisplay date = {education.toYear}/> </div>
             </div>
           {mode  && mode!=modes.VIEW &&  <div>
             <div className="col-xs-1" onClick={() => editClicked()}>

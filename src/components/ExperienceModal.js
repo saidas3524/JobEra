@@ -83,16 +83,17 @@ export class ExperienceModal extends Component {
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.action === ModalActions.EDIT && nextProps.value)
-            this.state = { ...nextProps.value }
+        this.setState( { ...nextProps.value });
         else {
-            this.state = {
+            this.setState( 
+            {
 
                 title: "",
                 company: "",
                 location: "",
                 fromYear: "",
                 toYear: "",
-            }
+            });
         }
     }
 

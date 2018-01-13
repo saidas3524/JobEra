@@ -34,7 +34,7 @@ export const Profile = (props) => {
 
 
                     <h1>{`${profile.firstName} ${profile.lastName}`}</h1>
-                    <h2>{`${profile.title}`}</h2>
+                    <hr/>   
                     <p>{profile.description}</p>
                 </div>
 

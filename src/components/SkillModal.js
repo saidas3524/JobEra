@@ -22,11 +22,11 @@ export class SkillModal extends Component {
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.action === ModalActions.EDIT && nextProps.value)
-            this.state = { ...nextProps.value }
+        this.setState( { ...nextProps.value });
         else {
-            this.state = {
+            this.setState( { 
                 skill: ""
-            }
+            });
         }
     }
     handleChange = (event) => {

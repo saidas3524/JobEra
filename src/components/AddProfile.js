@@ -58,11 +58,11 @@ export class AddProfile extends Component {
       this.props.getProfileData(this.id);
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.mode === ProfileModes.EDIT && nextProps.profile) {
+    if (nextProps.profile) {
       var profile = nextProps.profile;
       const { sections, ...personalInfo } = profile;
       this.setState({
-        sections: sections,
+        sections: profile.sections,
         personalInfo: personalInfo
       });
     }

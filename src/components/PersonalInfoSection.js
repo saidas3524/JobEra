@@ -130,11 +130,11 @@ export class PersonalInfoSection extends Component {
                             <h4>{`${personalInfo.firstName} ${personalInfo.lastName}`}</h4>
                             <p> {`${personalInfo.description}`}</p>
 
-                            <p> {`${personalInfo.DOB},${personalInfo.gender}`}</p>
+                            {/* <p> {`${personalInfo.DOB},${personalInfo.gender}`}</p> */}
 
 
                             <p> {`${personalInfo.email},${personalInfo.mobile}`}</p>
-                            <p> {`${personalInfo.Address}`}</p>
+                            <p> {`${personalInfo.address}`}</p>
 
                         </div></div>)}
 
