@@ -10,3 +10,4 @@ export { SAVE_PROFILE,saveProfile,SAVE_PROFILE_STATUS,saveProfileStatus} from '.
 export {INCREMENT_NO_OF_CALLS,incrementPendingAPICalls,DECREMENT_NO_OF_CALLS,decrementPendingAPICalls} from './pendingAPICalls';
 
 export {getProfileById,GET_PROFILE,setProfileById,SET_PROFILE} from './profile'
+export {alertAddAction,alertRemoveAction,alertRemoveAllAction,ADD_ALERT,REMOVE_ALERT,REMOVE_ALL_ALERTS} from './alertActions'

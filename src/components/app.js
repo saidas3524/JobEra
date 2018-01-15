@@ -18,8 +18,10 @@ import {
 import SearchProfiles from "../components/SearchProfiles";
 import { Spinner } from './common/spinner';
 import { pendingAPICallsSelector } from '../selectors/pendingAPICallsSelector';
-import  ViewProfile  from './ViewProfile';
+import ViewProfile from './ViewProfile';
 import { ProfileModes } from '../services/ConstantManager';
+import Alert from './common/Alerts/Alert';
+import AlertsContainer from './common/Alerts/AlertsContainer';
 export class App extends Component {
 
     constructor(props) {
@@ -48,15 +50,15 @@ export class App extends Component {
         const { match } = this.props;
         return (
             <div className="app"  >
-
+                <AlertsContainer />
                 {this.props.pendingCalls > 0 && <Spinner />}
                 <Header user={user} logoClicked={this.logoClicked} actionClicked={this.actionClicked} logOutClicked={this.logOutClicked} />
                 <Route exact path={match.path} render={(props) => (<Actions actionClicked={this.actionClicked} {...props} />)} />
-                <Route path={`${match.path}search`}  component={SearchProfiles} />
-                <Route path={`${match.path}View/:id`}render={(props)=>(<AddProfile mode={ProfileModes.VIEW}{...props}/>)}  />
-                <Route path={`${match.path}Edit/:id`}render={(props)=>(<AddProfile mode={ProfileModes.EDIT} {...props}/>)}  />
+                <Route path={`${match.path}search`} component={SearchProfiles} />
+                <Route path={`${match.path}View/:id`} render={(props) => (<AddProfile mode={ProfileModes.VIEW}{...props} />)} />
+                <Route path={`${match.path}Edit/:id`} render={(props) => (<AddProfile mode={ProfileModes.EDIT} {...props} />)} />
 
-                <Route path={`${match.path}Add`} render={(props)=>(<AddProfile mode={ProfileModes.CREATE} {...props}/>)}   />
+                <Route path={`${match.path}Add`} render={(props) => (<AddProfile mode={ProfileModes.CREATE} {...props} />)} />
 
             </div>
 

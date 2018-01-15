@@ -26,6 +26,11 @@ export const sectionTypes = {
     Experience:"exp"
 }
 
+export const APICallStatus = {
+    Success:"SUCCESS",
+    Failure: "FAILURE"
+}
+
 export const ProfileActions = {
     View:"VIEW",
     Edit:"EDIT",
@@ -43,4 +48,10 @@ export const ProfileModes = {
 export const ModalActions = {
     ADD:"ADD",
     EDIT:"EDIT"
+}
+
+export const AlertTypes={
+    SUCCESS:"SUCCESS",
+    ERROR:"ERROR",
+    INFO:"INFO"
 }

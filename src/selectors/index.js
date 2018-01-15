@@ -7,3 +7,4 @@ export {userSelector,tokenSelector} from './userSelector.js';
 export {profilesSelector} from './profilesSelector';   
 export {profileSelector} from './profileSelector';   
 export {pendingAPICallsSelector} from './pendingAPICallsSelector';
+export {alertsSelector} from './alertsSelector';

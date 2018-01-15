@@ -29,7 +29,6 @@ ReactDOM.render((
     <Provider store={store}>
         <BrowserRouter>
             <div>
-                {/* <Spinner /> */}
                 <Switch>
 
                     <NonAuthenticatedRoute exact path="/Register" component={Register} />
