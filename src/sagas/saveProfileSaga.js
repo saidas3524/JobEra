@@ -30,14 +30,14 @@ export function* saveProfileSaga() {
         else {
             if (response) {
                 const message = yield response.json();
-                yield put(saveProfileStatus(FAILURE, message));
-                yield put(alertAddAction(SAVE_PROFILE,APICallStatus.Failure,message));
+                yield put(saveProfileStatus(FAILURE, message.message));
+                yield put(alertAddAction(createAlert(SAVE_PROFILE,APICallStatus.Failure,message.message)));
             }
             else {
 
 
                 yield put(saveProfileStatus(FAILURE, error));
-                yield put(alertAddAction(SAVE_PROFILE,APICallStatus.Failure,error));
+                yield put(alertAddAction(createAlert(SAVE_PROFILE,APICallStatus.Failure,error)));
 
             }
         }

@@ -18,6 +18,7 @@ export class AddProfile extends Component {
     this.close = this.close.bind(this);
     this.id = props.match.params.id;
     this.state = {
+      id:"",
       personalInfo: {
         firstName: "",
         lastName: "",
