@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getProfiles } from '../actions';
-import { profilesSelector } from '../selectors';
+import { profilesSelector,userSelector } from '../selectors';
 import { Profile } from "../components";
 import "./searchProfile.css";
 import { arrayFilter } from '../utility';
@@ -55,6 +55,7 @@ class SearchProfiles extends Component {
   render() {
     const { filteredProfiles } = this.state;
     const { filter } = this.state;
+    const {isUserAdmin} = this.props;
     return (
       <div>
 
@@ -72,7 +73,7 @@ class SearchProfiles extends Component {
                     </div>
                   </form>
                   {filteredProfiles && filteredProfiles.length == 0 && <div className="animated fadeInUp"> Sorry! No Profiles to show</div>}
-                  {filteredProfiles && filteredProfiles.length > 0 && filteredProfiles.map((profile) => { return <Profile profile={profile} actionClicked={this.actionClicked} /> })}
+                  {filteredProfiles && filteredProfiles.length > 0 && filteredProfiles.map((profile) => { return <Profile profile={profile} isUserAdmin= {isUserAdmin} actionClicked={this.actionClicked} /> })}
 
                 </div>
               </div>
@@ -91,8 +92,11 @@ var mapStateToProps = (state) => {
 
   var profiles = profilesSelector(state);
   profiles = profiles ? profiles.toJS() : profiles;
+  var user = userSelector(state);
+  var isUserAdmin = user ? user.toJS().isAdmin : false;
   return {
-    profiles: profiles
+    profiles: profiles,
+    isUserAdmin: isUserAdmin
   }
 }
 

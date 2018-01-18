@@ -11,6 +11,7 @@ import { saveProfile, getProfileById } from "../actions";
 import { sections as Sections } from "../services";
 import { ProfileModes, ModalActions, sectionTypes } from '../services/ConstantManager';
 import { profileSelector } from '../selectors';
+import { userSelector } from '../selectors/userSelector';
 
 export class AddProfile extends Component {
   constructor(props) {
@@ -228,8 +229,10 @@ const mapStateToProps = (state) => {
 
   var profile = profileSelector(state);
   profile = profile ? profile.toJS() : profile;
+  
   return {
-    profile: profile
+    profile: profile,
+    
   }
 }
 

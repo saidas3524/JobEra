@@ -13,9 +13,10 @@ export const Profile = (props) => {
             <div className="img-box main-login ">
             <ul className="text-center">
                     <ProfileActionButton action={ProfileActions.View} onActionClicked={actionClicked}/>
-                    <ProfileActionButton action={ProfileActions.Edit} onActionClicked={actionClicked}/>
+                  {props.isUserAdmin &&  <ProfileActionButton action={ProfileActions.Edit} onActionClicked={actionClicked}/>}
 
-                    <ProfileActionButton action={ProfileActions.Delete} onActionClicked={actionClicked}/>
+                  {props.isUserAdmin &&  <ProfileActionButton action={ProfileActions.Delete} onActionClicked={actionClicked}/>}
+                  
 
                     {/* <a href="#" ><span className="fa-stack fa-2x">
                         <i className="fa fa-circle fa-stack-2x text-primary"></i>
