@@ -74,7 +74,7 @@ export class PersonalInfoSection extends Component {
                                         <div className="input-group date" id="dobDatePicker">
                                             <span className="input-group-addon"><i className="fa fa-calendar " aria-hidden="true"></i></span>
                                             {/* <input type='text' className="form-control" name="dob" id="dob" onChange={this.handleChange} placeholder="Date of birth" value={personalInfo.dob} /> */}
-                                            <DateTime timeFormat={false} inputProps={{ placeholder: "Date of birth", name: "dob", className: "form-control" }} onChange={this.dobDateChanged} value={personalInfo.dob} />
+                                            <DateTime timeFormat={false} inputProps={{ placeholder: "Date of birth", name: "dob", className: "form-control" }} onChange={this.dobDateChanged} value={new Date(personalInfo.dob).toLocaleDateString() } />
                                         </div>
                                     </div>
                                 </div>
@@ -85,9 +85,9 @@ export class PersonalInfoSection extends Component {
                                         <div className="input-group date" id="dobDatePicker">
                                             <span className="input-group-addon"><i className="fa fa-venus-mars" aria-hidden="true"></i></span>
                                             <select className="form-control" id="exampleFormControlSelect1" name="gender" onChange={this.handleChange} value={personalInfo.gender}>
-                                                <option disabled selected value>Select gender</option>
+                                                <option value=" ">Select gender</option>
                                                 <option value="M">Male</option>
-                                                <option vlaue="S">Female</option>
+                                                <option value="F">Female</option>
                                             </select>
                                         </div>
                                     </div>

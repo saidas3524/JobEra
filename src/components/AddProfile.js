@@ -64,6 +64,7 @@ export class AddProfile extends Component {
       var profile = nextProps.profile;
       const { sections, ...personalInfo } = profile;
       this.setState({
+        id:profile._id,
         sections: profile.sections,
         personalInfo: personalInfo
       });
