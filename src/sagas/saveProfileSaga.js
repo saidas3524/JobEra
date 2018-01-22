@@ -8,6 +8,8 @@ import { setToken,APICallStatus } from "../services";
 import { InvokeUrl } from './utilitySagas';
 import { alertAddAction } from '../actions/alertActions';
 import { createAlert } from '../utility/createAlert';
+import { API_CONSTANTS } from "../services";
+
 
 
 export function* saveProfileSaga() {
@@ -17,7 +19,7 @@ export function* saveProfileSaga() {
         const {profile} = yield take(SAVE_PROFILE);
         yield put(saveProfileStatus(PENDING));
 
-        const response = yield call(InvokeUrl, "http://localhost:3300/saveProfile", "POST",profile);
+        const response = yield call(InvokeUrl, `${API_CONSTANTS.Url}/saveProfile`, "POST",profile);
         if (response && response.status >= 200 && response.status < 300) {
 
 

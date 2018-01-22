@@ -7,6 +7,8 @@ import { FAILURE } from '../actions/statusConstants';
 import { removeToken, getToken } from '../services/TokenManager';
 import { InvokeUrl } from "./utilitySagas";
 import { alertAddAction } from '../actions/alertActions';
+import { API_CONSTANTS } from "../services";
+
 
 
 
@@ -16,7 +18,7 @@ export function* getUserInfoSaga() {
         var token = yield getToken();
          //valid token check
         if (token) {
-            const responseC = yield call(InvokeUrl, "http://localhost:3300/getUserInfo", "GET");
+            const responseC = yield call(InvokeUrl, `${API_CONSTANTS.Url}/getUserInfo`, "GET");
             if (responseC && responseC.status == 200) {
                 const user = yield apply(responseC, responseC.json);
                 yield put(setUser(user))

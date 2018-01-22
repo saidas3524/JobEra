@@ -55,3 +55,7 @@ export const AlertTypes={
     ERROR:"ERROR",
     INFO:"INFO"
 }
+
+export const API_CONSTANTS= {
+    Url: "https://testerae.azurewebsites.net"
+}

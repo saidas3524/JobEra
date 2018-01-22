@@ -6,6 +6,8 @@ import { SAVE_USER_REGISTRATION, registrationStatus, SUCCESS, FAILURE, PENDING }
 
 import { setToken } from "../services";
 import { fetchUtility } from '../utility/fetchUtility';
+import { API_CONSTANTS } from "../services";
+
 
 
 export function* saveUserRegistration() {
@@ -15,7 +17,7 @@ export function* saveUserRegistration() {
         const { user } = yield take(SAVE_USER_REGISTRATION);
         yield put(registrationStatus(PENDING));
 
-        const { response, error } = yield call(fetchUtility, "http://localhost:3300/register", {
+        const { response, error } = yield call(fetchUtility, `${API_CONSTANTS.Url}/register`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

@@ -7,6 +7,7 @@ import { LOGIN, setUser, loginStatus, SUCCESS, FAILURE, PENDING,setToken } from 
 import { setToken as setTokenInStorage } from "../services";
 
 import { fetchUtility } from '../utility/fetchUtility';
+import { API_CONSTANTS } from '../services';
 
 
 export function* loginSaga() {
@@ -16,7 +17,7 @@ export function* loginSaga() {
 
         const { user } = yield take(LOGIN);
         yield put(loginStatus(PENDING));
-        const { response, error } = yield call(fetchUtility, "http://localhost:3300/login", {
+        const { response, error } = yield call(fetchUtility, `${API_CONSTANTS.Url}/login`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
