@@ -33,6 +33,10 @@ class SearchProfiles extends Component {
   componentWillReceiveProps(nextProps) {
     this.state.filteredProfiles = nextProps.profiles;
   }
+  dontSubmit = (e)=> {
+    e.preventDefault();
+    return false
+  };
   handleChange = (event) => {
     const target = event.target;
     const value = target.value;
@@ -64,7 +68,7 @@ class SearchProfiles extends Component {
             <div className="col-md-10 col-md-offset-1">
               <div className="col-lg-12">
                 <div className="row pt-md">
-                  <form>
+                  <form onSubmit ={this.dontSubmit}>
                     <div id="searchFilter" className="form-group animated fadeInDown">
                       <div className="input-group">
                         <span className="input-group-addon"><i className="fa fa-filter fa" aria-hidden="true"></i></span>

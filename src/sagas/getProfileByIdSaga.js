@@ -11,7 +11,7 @@ import { API_CONSTANTS } from "../services";
 export function* getProfileByIdSaga() {
     while (true) {
         const {id} = yield take(GET_PROFILE);
-        const responseC = yield call(InvokeUrl, `${API_CONSTANTS.Url}/${id}`, "GET");
+        const responseC = yield call(InvokeUrl, `${API_CONSTANTS.Url}/getProfileById/${id}`, "GET");
         if (responseC.status == 200) {
             const profile = yield apply(responseC, responseC.json);
 

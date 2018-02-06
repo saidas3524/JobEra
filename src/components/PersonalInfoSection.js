@@ -92,6 +92,20 @@ export class PersonalInfoSection extends Component {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="form-group">
+
+                                    <div className="col-sm-6">
+                                        <label htmlFor="email" className=" control-label">Disability Type</label>
+                                        <div className="input-group date" id="dobDatePicker">
+                                            <span className="input-group-addon"><i className="fa fa-venus-mars" aria-hidden="true"></i></span>
+                                            <select className="form-control" id="exampleFormControlSelect2" name="disabilityType" onChange={this.handleChange} value={personalInfo.disabilityType}>
+                                                <option value=" ">Select Disability</option>
+                                                <option value="V">Vision Impairment</option>
+                                                <option value="H">Hearing loss or Deaf</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div className="form-group">
 

@@ -57,5 +57,6 @@ export const AlertTypes={
 }
 
 export const API_CONSTANTS= {
-    Url: "https://testerae.azurewebsites.net"
+     Url: "https://testerae.azurewebsites.net"
+    // Url:"http://localhost:3300"
 }

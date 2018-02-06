@@ -22,6 +22,7 @@ export class AddProfile extends Component {
       id:"",
       personalInfo: {
         firstName: "",
+        disabilityType:"",
         lastName: "",
         dob: "",
         gender: "",
