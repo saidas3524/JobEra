@@ -46,6 +46,10 @@ module.exports = {
                 },
                 'image-webpack-loader'
             ]
+        },
+        {
+            test: /\.(config)$/,
+            loader: 'file-loader?name=[name].[ext]'
         }
         ]
     },
